@@ -13,6 +13,12 @@
         android:theme="@style/Theme.AppGym"
         tools:targetApi="31">
         <activity
+            android:name=".TablaDietaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TablaEntrenamientoActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
