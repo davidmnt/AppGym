@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:text="Fitness App"
         android:textSize="30sp"
-        android:background="@color/gre_claro"
+        android:background="@color/gris_claro"
         android:textColor="@color/white"
         android:padding="15dp"
         android:gravity="center"

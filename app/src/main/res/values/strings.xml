@@ -1,3 +1,50 @@
 <resources>
     <string name="app_name">AppGym</string>
+    <string-array name="ejerciciosGym">
+        <item>Press plano maquina</item>
+        <item>Press inclinado</item>
+        <item>Contractora</item>
+        <item>Flexiones</item>
+        <item>Elevaciones lat Mancuernas</item>
+        <item>Curl alterno de pie</item>
+        <item>Curl invertido</item>
+        <item>Pull over</item>
+        <item>Rack pull</item>
+        <item>Jalon al pecho</item>
+        <item>Remo con barra</item>
+        <item>Remo en T</item>
+        <item>Press frances tumbado</item>
+        <item>Press frances sentado</item>
+        <item>Tiron de polea encima de la cabeza</item>
+        <item>Femoral tumbado</item>
+        <item>Extension de cuádriceps</item>
+        <item>Prensa</item>
+        <item>Prensa a una pierna</item>
+        <item>Aductores</item>
+        <item>Gemelo en prensa</item>
+        <item>Gemelo a una pierna</item>
+        <item>Pajaro</item>
+        <item>Press en maquina</item>
+        <item>Laterales sentado</item>
+        <item>Laterales en polea</item>
+        <item>Encogimiento pesado</item>
+    </string-array>
+
+    <string-array name="diaEj">
+        <item>Pecho</item>
+        <item>Hombro</item>
+        <item>Biceps</item>
+        <item>Triceps</item>
+        <item>Espalda</item>
+        <item>Pierna</item>
+        <item>Femoral</item>
+        <item>Gemelo</item>
+        <item>Trapecio</item>
+
+
+
+
+
+
+    </string-array>
 </resources>
