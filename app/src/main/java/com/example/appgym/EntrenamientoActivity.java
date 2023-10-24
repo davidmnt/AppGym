@@ -107,6 +107,9 @@ public class EntrenamientoActivity extends AppCompatActivity {
 
         //Ejercicios
 
+        Spinner despleMusculo1 = findViewById(R.id.despleMusuculouno);
+        Spinner despleMusculo2 = findViewById(R.id.despleMusuculodos);
+
         Spinner despl1 = findViewById(R.id.uno);
         Spinner despl2 = findViewById(R.id.dos);
         Spinner despl3 = findViewById(R.id.tres);
@@ -120,13 +123,20 @@ public class EntrenamientoActivity extends AppCompatActivity {
         Spinner despl11 = findViewById(R.id.once);
         Spinner despl12 = findViewById(R.id.doce);
 
-        Spinner[] arrayDesplegables = {despl1,despl2,despl3,despl4,despl5,despl6,despl7,despl8,despl9,despl10,despl11,despl12};
+        Spinner[] arrayDesplegablesDias = {despleMusculo1,despleMusculo2};
+        ArrayAdapter<CharSequence> adapterDias=ArrayAdapter.createFromResource(this, R.array.diaEj, android.R.layout.simple_spinner_item);
+        adapterDias.setDropDownViewResource(android.R.layout.simple_spinner_item);
 
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this, R.array.ejerciciosGym, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        for(int i = 0;i<arrayDesplegablesDias.length;i++){
+            arrayDesplegablesDias[i].setAdapter(adapterDias);
+        }
 
-        for (int i = 0; i< arrayDesplegables.length;i++){
-            arrayDesplegables[i].setAdapter(adapter);
+        Spinner[] arrayDesplegablesEjercicios = {despl1,despl2,despl3,despl4,despl5,despl6,despl7,despl8,despl9,despl10,despl11,despl12};
+        ArrayAdapter<CharSequence> adapterEjercicios=ArrayAdapter.createFromResource(this, R.array.ejerciciosGym, android.R.layout.simple_spinner_item);
+        adapterEjercicios.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        for (int i = 0; i< arrayDesplegablesEjercicios.length;i++){
+            arrayDesplegablesEjercicios[i].setAdapter(adapterEjercicios);
         }
 
 
