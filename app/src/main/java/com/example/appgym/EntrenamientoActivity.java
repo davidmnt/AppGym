@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.security.Provider;
+
 public class EntrenamientoActivity extends AppCompatActivity {
 
     private boolean isOn = false;
@@ -109,6 +111,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
 
         Spinner despleMusculo1 = findViewById(R.id.despleMusuculouno);
         Spinner despleMusculo2 = findViewById(R.id.despleMusuculodos);
+        Spinner despleMusculo3 = findViewById(R.id.despleMusuculotres);
 
         Spinner despl1 = findViewById(R.id.uno);
         Spinner despl2 = findViewById(R.id.dos);
@@ -123,7 +126,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
         Spinner despl11 = findViewById(R.id.once);
         Spinner despl12 = findViewById(R.id.doce);
 
-        Spinner[] arrayDesplegablesDias = {despleMusculo1,despleMusculo2};
+        Spinner[] arrayDesplegablesDias = {despleMusculo1,despleMusculo2,despleMusculo3};
         ArrayAdapter<CharSequence> adapterDias=ArrayAdapter.createFromResource(this, R.array.diaEj, android.R.layout.simple_spinner_item);
         adapterDias.setDropDownViewResource(android.R.layout.simple_spinner_item);
 

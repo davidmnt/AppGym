@@ -50,7 +50,6 @@
             android:text="Reset"/>
 
 
-
     </LinearLayout>
 
 
@@ -212,7 +211,8 @@
                 android:layout_marginTop="30dp"
                 android:padding="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/siete" />
+                app:layout_constraintTop_toBottomOf="@+id/siete"
+                app:layout_constraintBottom_toTopOf="@+id/despleMusuculotres"/>
 
             <Spinner
                 android:id="@+id/despleMusuculotres"
