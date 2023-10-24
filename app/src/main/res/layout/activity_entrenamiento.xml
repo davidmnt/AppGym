@@ -14,16 +14,16 @@
         android:layout_height="wrap_content"
         android:text="00:00:00"
         android:textSize="70dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/botones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/reloj">
 
         <Button
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:backgroundTint="@color/gris_claro"
-            android:text="Stop"/>
+            android:text="Stop" />
 
         <Button
             android:id="@+id/reset"
@@ -47,17 +47,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:backgroundTint="@color/gris_claro"
-            android:text="Reset"/>
+            android:text="Reset" />
 
 
     </LinearLayout>
 
 
-
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="550dp"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,25 +72,26 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <Spinner
                 android:id="@+id/uno"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_marginTop="30dp"
+                android:background="@color/white"
                 android:padding="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/despleMusuculouno"/>
+                app:layout_constraintTop_toBottomOf="@+id/despleMusuculouno" />
 
             <EditText
+                android:id="@+id/textUno"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
                 android:layout_marginStart="5dp"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/uno"
                 app:layout_constraintTop_toTopOf="@+id/uno" />
 
@@ -99,15 +99,17 @@
                 android:id="@+id/dos"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_marginTop="30dp"
+                android:background="@color/white"
                 android:padding="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/uno" />
 
             <EditText
+                android:id="@+id/textDos"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/dos"
                 app:layout_constraintTop_toTopOf="@+id/dos" />
 
@@ -115,15 +117,17 @@
                 android:id="@+id/tres"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:background="@color/white"
                 android:padding="20dp"
-                android:layout_marginTop="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dos" />
 
             <EditText
+                android:id="@+id/textTres"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/tres"
                 app:layout_constraintTop_toTopOf="@+id/tres" />
 
@@ -131,16 +135,18 @@
                 android:id="@+id/cuatro"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:background="@color/white"
                 android:padding="20dp"
-                android:layout_marginTop="30dp"
+                app:layout_constraintBottom_toTopOf="@+id/despleMusuculodos"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tres"
-                app:layout_constraintBottom_toTopOf="@+id/despleMusuculodos"/>
+                app:layout_constraintTop_toBottomOf="@+id/tres" />
 
             <EditText
+                android:id="@+id/textcuatro"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/cuatro"
                 app:layout_constraintTop_toTopOf="@+id/cuatro" />
 
@@ -148,25 +154,27 @@
                 android:id="@+id/despleMusuculodos"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_marginTop="30dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cuatro"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cuatro" />
 
             <Spinner
                 android:id="@+id/cinco"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
                 android:background="@color/white"
                 android:padding="20dp"
-                android:layout_marginTop="40dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/despleMusuculodos" />
 
             <EditText
+                android:id="@+id/textCinco"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/cinco"
                 app:layout_constraintTop_toTopOf="@+id/cinco" />
 
@@ -174,15 +182,17 @@
                 android:id="@+id/seix"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:background="@color/white"
                 android:padding="20dp"
-                android:layout_marginTop="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cinco" />
 
             <EditText
+                android:id="@+id/textSeix"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/seix"
                 app:layout_constraintTop_toTopOf="@+id/seix" />
 
@@ -191,15 +201,17 @@
                 android:id="@+id/siete"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_marginTop="30dp"
+                android:background="@color/white"
                 android:padding="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/seix"/>
+                app:layout_constraintTop_toBottomOf="@+id/seix" />
 
             <EditText
+                android:id="@+id/textSiete"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/siete"
                 app:layout_constraintTop_toTopOf="@+id/siete" />
 
@@ -207,27 +219,29 @@
                 android:id="@+id/ocho"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_marginTop="30dp"
+                android:background="@color/white"
                 android:padding="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/despleMusuculotres"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/siete"
-                app:layout_constraintBottom_toTopOf="@+id/despleMusuculotres"/>
+                app:layout_constraintTop_toBottomOf="@+id/siete" />
 
             <Spinner
                 android:id="@+id/despleMusuculotres"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_marginTop="30dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ocho"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ocho" />
 
 
             <EditText
+                android:id="@+id/textOcho"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/ocho"
                 app:layout_constraintTop_toTopOf="@+id/ocho" />
 
@@ -235,15 +249,17 @@
                 android:id="@+id/nueve"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:background="@color/white"
                 android:padding="20dp"
-                android:layout_marginTop="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/despleMusuculotres" />
 
             <EditText
+                android:id="@+id/textnueve"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/nueve"
                 app:layout_constraintTop_toTopOf="@+id/nueve" />
 
@@ -251,15 +267,17 @@
                 android:id="@+id/diez"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:background="@color/white"
                 android:padding="20dp"
-                android:layout_marginTop="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nueve" />
 
             <EditText
+                android:id="@+id/textDiez"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/diez"
                 app:layout_constraintTop_toTopOf="@+id/diez" />
 
@@ -267,15 +285,17 @@
                 android:id="@+id/once"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:background="@color/white"
                 android:padding="20dp"
-                android:layout_marginTop="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/diez" />
 
             <EditText
+                android:id="@+id/textOnce"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/once"
                 app:layout_constraintTop_toTopOf="@+id/once" />
 
@@ -283,17 +303,49 @@
                 android:id="@+id/doce"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:background="@color/white"
                 android:padding="20dp"
-                android:layout_marginTop="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/once" />
 
             <EditText
+                android:id="@+id/textDoce"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/doce"
                 app:layout_constraintTop_toTopOf="@+id/doce" />
+
+            <Spinner
+                android:id="@+id/trece"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@color/white"
+                android:padding="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doce" />
+
+            <EditText
+                android:id="@+id/textTrece"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@+id/trece"
+                app:layout_constraintTop_toTopOf="@+id/trece" />
+
+            <Button
+                android:id="@+id/enviar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="@color/white"
+                android:text="Enviar"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/trece" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

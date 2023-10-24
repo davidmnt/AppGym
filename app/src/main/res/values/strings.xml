@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">AppGym</string>
-    <string-array name="ejerciciosGym">
+
+    <string-array name="EjercicioGym">
         <item>Press plano maquina</item>
         <item>Press inclinado</item>
         <item>Contractora</item>
         <item>Flexiones</item>
-        <item>Elevaciones lat Mancuernas</item>
         <item>Curl alterno de pie</item>
         <item>Curl invertido</item>
         <item>Pull over</item>
@@ -24,11 +24,18 @@
         <item>Gemelo en prensa</item>
         <item>Gemelo a una pierna</item>
         <item>Pajaro</item>
+        <item>Elevaciones lat Mancuernas</item>
         <item>Press en maquina</item>
         <item>Laterales sentado</item>
         <item>Laterales en polea</item>
+    </string-array>
+
+
+    <string-array name="EjercicioTrapecio">
         <item>Encogimiento pesado</item>
     </string-array>
+
+    //Array de grupo musculares
 
     <string-array name="diaEj">
         <item>Pecho</item>
@@ -38,13 +45,8 @@
         <item>Espalda</item>
         <item>Pierna</item>
         <item>Femoral</item>
+        <item>Aductores</item>
         <item>Gemelo</item>
         <item>Trapecio</item>
-
-
-
-
-
-
     </string-array>
 </resources>
