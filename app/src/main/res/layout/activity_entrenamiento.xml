@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".EntrenamientoActivity">
+    tools:context=".EntrenamientoActivity"
+    >
 
 
     <TextView
@@ -77,7 +78,7 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <Spinner
-                android:id="@+id/uno"
+                android:id="@+id/cero"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -85,6 +86,24 @@
                 android:padding="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/despleMusuculouno" />
+
+            <EditText
+                android:id="@+id/textCero"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@+id/cero"
+                app:layout_constraintTop_toTopOf="@+id/cero" />
+
+            <Spinner
+                android:id="@+id/uno"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@color/white"
+                android:padding="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cero" />
 
             <EditText
                 android:id="@+id/textUno"
@@ -317,23 +336,6 @@
                 app:layout_constraintStart_toEndOf="@+id/doce"
                 app:layout_constraintTop_toTopOf="@+id/doce" />
 
-            <Spinner
-                android:id="@+id/trece"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:background="@color/white"
-                android:padding="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/doce" />
-
-            <EditText
-                android:id="@+id/textTrece"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toEndOf="@+id/trece"
-                app:layout_constraintTop_toTopOf="@+id/trece" />
 
             <Button
                 android:id="@+id/enviar"
@@ -345,7 +347,7 @@
                 android:text="Enviar"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/trece" />
+                app:layout_constraintTop_toBottomOf="@+id/doce" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
