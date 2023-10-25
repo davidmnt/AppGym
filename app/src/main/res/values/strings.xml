@@ -1,28 +1,64 @@
 <resources>
     <string name="app_name">AppGym</string>
 
-    <string-array name="EjercicioGym">
+    <string-array name="vacio">
+        <item>------</item>
+    </string-array>
+
+    <string-array name="EjercicioPecho">
         <item>Press plano maquina</item>
         <item>Press inclinado</item>
         <item>Contractora</item>
         <item>Flexiones</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="EjercicioBiceps">
         <item>Curl alterno de pie</item>
         <item>Curl invertido</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="EjercicioEspalda">
         <item>Pull over</item>
         <item>Rack pull</item>
         <item>Jalon al pecho</item>
         <item>Remo con barra</item>
         <item>Remo en T</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="EjercicioTricpes">
         <item>Press frances tumbado</item>
         <item>Press frances sentado</item>
         <item>Tiron de polea encima de la cabeza</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="EjercicioFemoral">
         <item>Femoral tumbado</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="EjercicioPierna">
         <item>Extension de cuádriceps</item>
         <item>Prensa</item>
         <item>Prensa a una pierna</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="EjercicioAductores">
         <item>Aductores</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="EjercicioGemelo">
         <item>Gemelo en prensa</item>
         <item>Gemelo a una pierna</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="EjercicioHombro">
         <item>Pajaro</item>
         <item>Elevaciones lat Mancuernas</item>
         <item>Press en maquina</item>
@@ -34,11 +70,14 @@
 
     <string-array name="EjercicioTrapecio">
         <item>Encogimiento pesado</item>
+        <item></item>
     </string-array>
+
 
     //Array de grupo musculares
 
     <string-array name="diaEj">
+        <item>Seleccione una opcion</item>
         <item>Pecho</item>
         <item>Hombro</item>
         <item>Biceps</item>

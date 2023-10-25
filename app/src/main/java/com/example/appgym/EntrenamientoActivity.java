@@ -7,22 +7,55 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.StringReader;
 import java.security.Provider;
 
 public class EntrenamientoActivity extends AppCompatActivity {
 
-
-    private static int contEj = 0;
-    private boolean isOn = false;
-    private int mili = 0;
-    private int seg = 0;
-    private int min = 0;
-    private Handler h = new Handler();
+    //Creacion de fichero
+    private static File f = new File("C:\\FicheroPesos");
+    public static String PressPlanoMaquina = "";
+    public static String PressInclinado = "";
+    public static String Contractora = "";
+    public static String Flexiones = "";
+    public static String ElevacionesLatMancuernas = "";
+    public static String CurlAlternoPie = "";
+    public static String CurlInvertido = "";
+    public static String PullOver = "";
+    public static String RackPull = "";
+    public static String JalonPecho = "";
+    public static String RemoBarra = "";
+    public static String RemoT = "";
+    public static String PressFrancesTumbado = "";
+    public static String PressFrancesSentado = "";
+    public static String TironPoleaEncimaDeLaCabeza = "";
+    public static String FemoralTumbado = "";
+    public static String ExtensionCuádriceps = "";
+    public static String Prensa = "";
+    public static String PrensaUnaPierna = "";
+    public static String Aductores = "";
+    public static String GemeloEnPrensa = "";
+    public static String GemeloUnaPierna = "";
+    public static String Pajaro = "";
+    public static String PressMaquina = "";
+    public static String LateralesSentado = "";
+    public static String LateralesPolea = "";
+    public static String EncogimientoPesado = "";
+    public boolean isOn = false;
+    public int mili = 0;
+    public int seg = 0;
+    public int min = 0;
+    public Handler h = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,7 +171,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
 
         //Declaramos los text de cada desplegable de ejercicios
 
-        TextView text0 = findViewById(R.id.textCero);
+        TextView text0 = findViewById(R.id.textcero);
         TextView text1 = findViewById(R.id.textUno);
         TextView text2 = findViewById(R.id.textDos);
         TextView text3 = findViewById(R.id.textTres);
@@ -153,13 +186,12 @@ public class EntrenamientoActivity extends AppCompatActivity {
         TextView text12 = findViewById(R.id.textDoce);
 
 
-
         //Declaramos el Boton enviar
         Button botonEnviar = findViewById(R.id.enviar);
 
         //Creamos array de texto
 
-        TextView[] arrayText = {text0,text1, text2, text3, text4, text5, text6, text7, text8, text9, text10, text11, text12};
+        TextView[] arrayText = {text0, text1, text2, text3, text4, text5, text6, text7, text8, text9, text10, text11, text12};
 
         //Creamos el array de ejercicios
 
@@ -168,13 +200,8 @@ public class EntrenamientoActivity extends AppCompatActivity {
                 "PressFrancesSentado", "TironPoleaEncimaDeLaCabeza", "FemoralTumbado", "ExtensionCuádriceps", "Prensa", "PrensaUnaPierna", "Aductores", "GemeloEnPrensa",
                 "GemeloUnaPierna", "Pajaro", "PressMaquina", "LateralesSentado", "LateralesPolea", "EncogimientoPesado"};
 
-        //Creamos el array  para introducir los pesos
-        for (int i = 0;i<arrayEjer.length;i++){
-            contEj++;
-        }
-        String[] arrayPesos = new String[contEj];
 
-        Log.e("Longitud array de pesos", String.valueOf(contEj));
+
 
         //Creamos el array de los grupos musculares
 
@@ -190,47 +217,340 @@ public class EntrenamientoActivity extends AppCompatActivity {
 
         //Bucle para meter los ejecicios en los desplegables
 
-        Spinner[] arrayDesplegablesEjercicios = {despl0,despl1, despl2, despl3, despl4, despl5, despl6, despl7, despl8, despl9, despl10, despl11, despl12};
+        Spinner[] arrayDesplegablesEjercicios = {despl0, despl1, despl2, despl3, despl4, despl5, despl6, despl7, despl8, despl9, despl10, despl11, despl12};
 
 
-        ArrayAdapter<CharSequence> adapterEjercicios = ArrayAdapter.createFromResource(this, R.array.EjercicioGym, android.R.layout.simple_spinner_item);
-        adapterEjercicios.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        //Vacio
+        ArrayAdapter<CharSequence> adapterVacio = ArrayAdapter.createFromResource(this, R.array.vacio, android.R.layout.simple_spinner_item);
+        adapterVacio.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        //Declaramos todos los desplegables de ejercicios en vacio
 
         for(int i = 0;i<arrayDesplegablesEjercicios.length;i++){
-            arrayDesplegablesEjercicios[i].setAdapter(adapterEjercicios);
+            arrayDesplegablesEjercicios[i].setAdapter(adapterVacio);
         }
+
+        //Pecho
+        ArrayAdapter<CharSequence> adapterPecho = ArrayAdapter.createFromResource(this, R.array.EjercicioPecho, android.R.layout.simple_spinner_item);
+        adapterPecho.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        //Biceps
+        ArrayAdapter<CharSequence> adapterBiceps = ArrayAdapter.createFromResource(this, R.array.EjercicioBiceps, android.R.layout.simple_spinner_item);
+        adapterBiceps.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        //Espalda
+        ArrayAdapter<CharSequence> adapterEspalda = ArrayAdapter.createFromResource(this, R.array.EjercicioEspalda, android.R.layout.simple_spinner_item);
+        adapterEspalda.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        //Triceps
+        ArrayAdapter<CharSequence> adapterTriceps = ArrayAdapter.createFromResource(this, R.array.EjercicioTricpes, android.R.layout.simple_spinner_item);
+        adapterTriceps.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        //Femoral
+        ArrayAdapter<CharSequence> adapterFemoral = ArrayAdapter.createFromResource(this, R.array.EjercicioFemoral, android.R.layout.simple_spinner_item);
+        adapterFemoral.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        //Pierna
+        ArrayAdapter<CharSequence> adapterPierna = ArrayAdapter.createFromResource(this, R.array.EjercicioPierna, android.R.layout.simple_spinner_item);
+        adapterPierna.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        //Aductores
+        ArrayAdapter<CharSequence> adapterAductores = ArrayAdapter.createFromResource(this, R.array.EjercicioAductores, android.R.layout.simple_spinner_item);
+        adapterAductores.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        //Gemelo
+        ArrayAdapter<CharSequence> adapterGemelo = ArrayAdapter.createFromResource(this, R.array.EjercicioGemelo, android.R.layout.simple_spinner_item);
+        adapterGemelo.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        //Hombro
+        ArrayAdapter<CharSequence> adapterHombro = ArrayAdapter.createFromResource(this, R.array.EjercicioHombro, android.R.layout.simple_spinner_item);
+        adapterHombro.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+        //Trapecio
+        ArrayAdapter<CharSequence> adapterTrapecio = ArrayAdapter.createFromResource(this, R.array.EjercicioTrapecio, android.R.layout.simple_spinner_item);
+        adapterTrapecio.setDropDownViewResource(android.R.layout.simple_spinner_item);
+
+
+        despleMusculo1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion = despleMusculo1.getSelectedItem().toString();
+
+                switch (seleccion) {
+                    case "Seleccione una opcion":
+
+                        for (i = 0; i < 5; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterVacio);
+                        }
+                        break;
+                    case "Pecho":
+
+                        for ( i = 0; i < 5; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterPecho);
+                        }
+                        break;
+                    case "Hombro":
+
+                        for ( i = 0; i < 5; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterHombro);
+                        }
+                        break;
+                    case "Biceps":
+
+                        for ( i = 0; i < 5; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterBiceps);
+                        }
+                        break;
+                    case "Triceps":
+
+                        for ( i = 0; i < 5; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterTriceps);
+                        }
+                        break;
+                    case "Espalda":
+
+                        for ( i = 0; i < 5; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterEspalda);
+                        }
+                        break;
+                    case "Pierna":
+
+                        for ( i = 0; i < 5; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterPierna);
+                        }
+                        break;
+                    case "Femoral":
+
+                        for ( i = 0; i < 5; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterFemoral);
+                        }
+                        break;
+                    case "Aductores":
+
+                        for ( i = 0; i < 5; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterAductores);
+                        }
+                        break;
+                    case "Gemlo":
+
+                        for ( i = 0; i < 5; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterGemelo);
+                        }
+                        break;
+                    case "Trapecio":
+
+                        for ( i = 0; i < 5; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterTrapecio);
+                        }
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Log.e("Seleccion nula","Tienes que seleccionar un item");
+            }
+        });
+
+        despleMusculo2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion = despleMusculo2.getSelectedItem().toString();
+
+                switch (seleccion) {
+                    case "Seleccione una opcion":
+
+                        for (i = 5; i < 9; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterVacio);
+                        }
+                        break;
+                    case "Pecho":
+
+                        for (i = 5; i < 9; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterPecho);
+                        }
+                        break;
+                    case "Hombro":
+
+                        for (i = 5; i < 9; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterHombro);
+                        }
+                        break;
+                    case "Biceps":
+
+                        for (i = 5; i < 9; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterBiceps);
+                        }
+                        break;
+                    case "Triceps":
+
+                        for (i = 5; i < 9; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterTriceps);
+                        }
+                        break;
+                    case "Espalda":
+
+                        for (i = 5; i < 9; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterEspalda);
+                        }
+                        break;
+                    case "Pierna":
+
+                        for (i = 5; i < 9; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterPierna);
+                        }
+                        break;
+                    case "Femoral":
+
+                        for (i = 5; i < 9; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterFemoral);
+                        }
+                        break;
+                    case "Aductores":
+
+                        for (i = 5; i < 9; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterAductores);
+                        }
+                        break;
+                    case "Gemlo":
+
+                        for (i = 5; i < 9; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterGemelo);
+                        }
+                        break;
+                    case "Trapecio":
+
+                        for (i = 5; i < 9; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterTrapecio);
+                        }
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Log.e("Seleccion nula","Tienes que seleccionar un item");
+            }
+        });
+
+        despleMusculo3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion = despleMusculo3.getSelectedItem().toString();
+
+                switch (seleccion) {
+                    case "Seleccione una opcion":
+
+                        for (i = 9; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterVacio);
+                        }
+                        break;
+                    case "Pecho":
+
+                        for (i = 9; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterPecho);
+                        }
+                        break;
+                    case "Hombro":
+
+                        for (i = 9; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterHombro);
+                        }
+                        break;
+                    case "Biceps":
+
+                        for (i = 9; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterBiceps);
+                        }
+                        break;
+                    case "Triceps":
+
+                        for (i = 9; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterTriceps);
+                        }
+                        break;
+                    case "Espalda":
+
+                        for (i = 9; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterEspalda);
+                        }
+                        break;
+                    case "Pierna":
+
+                        for (i = 9; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterPierna);
+                        }
+                        break;
+                    case "Femoral":
+
+                        for (i = 9; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterFemoral);
+                        }
+                        break;
+                    case "Aductores":
+
+                        for (i = 9; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterAductores);
+                        }
+                        break;
+                    case "Gemlo":
+
+                        for (i = 9; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterGemelo);
+                        }
+                        break;
+                    case "Trapecio":
+
+                        for (i = 9; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterTrapecio);
+                        }
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Log.e("Seleccion nula","Tienes que seleccionar un item");
+            }
+        });
 
         botonEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Variables ejercicios
-                String PressPlanoMaquina = "";
-                String PressInclinado = "";
-                String Contractora = "";
-                String Flexiones = "";
-                String ElevacionesLatMancuernas = "";
-                String CurlAlternoPie = "";
-                String CurlInvertido = "";
-                String PullOver = "";
-                String RackPull = "";
-                String JalonPecho = "";
-                String RemoBarra = "";
-                String RemoT = "";
-                String PressFrancesTumbado = "";
-                String PressFrancesSentado = "";
-                String TironPoleaEncimaDeLaCabeza = "";
-                String FemoralTumbado = "";
-                String ExtensionCuádriceps = "";
-                String Prensa = "";
-                String PrensaUnaPierna = "";
-                String Aductores = "";
-                String GemeloEnPrensa = "";
-                String GemeloUnaPierna = "";
-                String Pajaro = "";
-                String PressMaquina = "";
-                String LateralesSentado = "";
-                String LateralesPolea = "";
-                String EncogimientoPesado = "";
+
                 String resultLog = "";
                 String result = "";
 
@@ -256,7 +576,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
                         for (int j = 0; j < arrayEjer.length; j++) {
 
                             if (arrayEjer[j].toString().equals("PressInclinado")) {
-                                PressInclinado= arrayText[i].getText().toString();
+                                PressInclinado = arrayText[i].getText().toString();
                                 break;
                             }
                         }
@@ -388,7 +708,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
                         for (int j = 0; j < arrayEjer.length; j++) {
 
                             if (arrayEjer[j].toString().equals("TironPoleaEncimaDeLaCabeza")) {
-                               TironPoleaEncimaDeLaCabeza = arrayText[i].getText().toString();
+                                TironPoleaEncimaDeLaCabeza = arrayText[i].getText().toString();
                                 break;
                             }
                         }
@@ -527,17 +847,46 @@ public class EntrenamientoActivity extends AppCompatActivity {
                         }
                         resultLog = "En el ejercicio: " + arrayDesplegablesEjercicios[i].getSelectedItem().toString() + " he levantado: " + LateralesPolea;
 
-                    }else{
+                    } else {
                         resultLog = "Desplegable vacio";
                     }
 
                     Log.e("Result", resultLog);
                 }
 
+                GuardarVariables gv = new GuardarVariables();
 
+                guardar(f);
             }
         });
 
 
     }
+
+    public static void guardar(File f) {
+
+
+        PechoO dia17_04_2023 = new PechoO(PressPlanoMaquina, PressInclinado, Contractora, Flexiones);
+
+        try {
+
+            f.createNewFile();
+
+            FileOutputStream fs = new FileOutputStream(f);
+            ObjectOutputStream os = new ObjectOutputStream(fs);
+
+            os.writeObject(dia17_04_2023);
+
+            os.close();
+            fs.close();
+            Log.e("Comprobacion de fichero","El fichero a sido completado correctamente");
+        } catch (IOException ex) {
+            System.out.println("Error al introducir");
+            ex.printStackTrace();
+        }
+
+
+
+    }
+
 }

@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/logo_gym_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppGym"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        >
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+             />
         <activity
             android:name=".EntrenamientoActivity"
             android:exported="false"
