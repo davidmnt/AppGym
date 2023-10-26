@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.StringReader;
 import java.security.Provider;
+import java.sql.SQLException;
 
 public class EntrenamientoActivity extends AppCompatActivity {
 
@@ -855,9 +856,9 @@ public class EntrenamientoActivity extends AppCompatActivity {
                     Log.e("Result", resultLog);
                 }
 
-                GuardarVariables gv = new GuardarVariables();
+                //GuardarVariables gv = new GuardarVariables();
+                //gv.ejecutarService("http://192.168.1.60/pesos/insertar.php");
 
-                gv.guardar();
             }
         });
     }

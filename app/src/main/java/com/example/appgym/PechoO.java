@@ -8,6 +8,30 @@ public class PechoO implements Serializable {
     private String contractora;
     private String flexiones;
 
+    public PechoO() {
+    }
+    public PechoO(String pressPlanoMaquina) {
+        this.pressPlanoMaquina = pressPlanoMaquina;
+        pressInclinado = "";
+        contractora = "";
+        flexiones = "";
+
+    }
+    public PechoO(String pressPlanoMaquina, String pressInclinado) {
+        this.pressPlanoMaquina = pressPlanoMaquina;
+        this.pressInclinado = pressInclinado;
+        contractora = "";
+        flexiones = "";
+
+    }
+    public PechoO(String pressPlanoMaquina, String pressInclinado, String contractora) {
+        this.pressPlanoMaquina = pressPlanoMaquina;
+        this.pressInclinado = pressInclinado;
+        this.contractora = contractora;
+        flexiones = "";
+
+    }
+
     public PechoO(String pressPlanoMaquina, String pressInclinado, String contractora, String flexiones) {
         this.pressPlanoMaquina = pressPlanoMaquina;
         this.pressInclinado = pressInclinado;
@@ -15,8 +39,7 @@ public class PechoO implements Serializable {
         this.flexiones = flexiones;
     }
 
-    public PechoO(String pressPlanoMaquina) {
-    }
+
 
     public String getPressPlanoMaquina() {
         return pressPlanoMaquina;
