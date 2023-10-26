@@ -1,6 +1,8 @@
 package com.example.appgym;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -23,7 +25,6 @@ import java.security.Provider;
 public class EntrenamientoActivity extends AppCompatActivity {
 
     //Creacion de fichero
-    private static File f = new File("C:\\FicheroPesos");
     public static String PressPlanoMaquina = "";
     public static String PressInclinado = "";
     public static String Contractora = "";
@@ -62,7 +63,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entrenamiento);
 
-
+    
         //Funcionalidad de cronometro
         //Cronometro
         Button start = findViewById(R.id.Start);
@@ -856,37 +857,8 @@ public class EntrenamientoActivity extends AppCompatActivity {
 
                 GuardarVariables gv = new GuardarVariables();
 
-                guardar(f);
+                gv.guardar();
             }
         });
-
-
     }
-
-    public static void guardar(File f) {
-
-
-        PechoO dia17_04_2023 = new PechoO(PressPlanoMaquina, PressInclinado, Contractora, Flexiones);
-
-        try {
-
-            f.createNewFile();
-
-            FileOutputStream fs = new FileOutputStream(f);
-            ObjectOutputStream os = new ObjectOutputStream(fs);
-
-            os.writeObject(dia17_04_2023);
-
-            os.close();
-            fs.close();
-            Log.e("Comprobacion de fichero","El fichero a sido completado correctamente");
-        } catch (IOException ex) {
-            System.out.println("Error al introducir");
-            ex.printStackTrace();
-        }
-
-
-
-    }
-
 }
