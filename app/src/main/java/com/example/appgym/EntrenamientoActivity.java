@@ -1,10 +1,7 @@
 package com.example.appgym;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -14,44 +11,61 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.StringReader;
-import java.security.Provider;
-import java.sql.SQLException;
+import com.example.appgym.Objetos.PechoO;
 
 public class EntrenamientoActivity extends AppCompatActivity {
 
-    //Creacion de fichero
+    static Modelo obj;
+    static PechoO p;
+
+    //Pecho
     public static String PressPlanoMaquina = "";
     public static String PressInclinado = "";
     public static String Contractora = "";
     public static String Flexiones = "";
+    //Hombro
     public static String ElevacionesLatMancuernas = "";
+
+    //Biceps
     public static String CurlAlternoPie = "";
     public static String CurlInvertido = "";
+
+    //Espalda
     public static String PullOver = "";
     public static String RackPull = "";
     public static String JalonPecho = "";
     public static String RemoBarra = "";
     public static String RemoT = "";
+
+    //Triceps
     public static String PressFrancesTumbado = "";
     public static String PressFrancesSentado = "";
     public static String TironPoleaEncimaDeLaCabeza = "";
+
+    //Femoral
     public static String FemoralTumbado = "";
+
+    //Pierna
     public static String ExtensionCuádriceps = "";
     public static String Prensa = "";
     public static String PrensaUnaPierna = "";
+
+    //Aductores
     public static String Aductores = "";
+
+    //Gemelo
     public static String GemeloEnPrensa = "";
     public static String GemeloUnaPierna = "";
+
+    //Hombro
     public static String Pajaro = "";
     public static String PressMaquina = "";
     public static String LateralesSentado = "";
     public static String LateralesPolea = "";
+
+    //Trapecio
     public static String EncogimientoPesado = "";
     public boolean isOn = false;
     public int mili = 0;
@@ -856,8 +870,17 @@ public class EntrenamientoActivity extends AppCompatActivity {
                     Log.e("Result", resultLog);
                 }
 
-                //GuardarVariables gv = new GuardarVariables();
-                //gv.ejecutarService("http://192.168.1.60/pesos/insertar.php");
+                obj = new Modelo();
+                p= new PechoO(PressPlanoMaquina,PressInclinado,Contractora,Flexiones);
+
+                int resInsert =obj.insertaPesoPecho(EntrenamientoActivity.this,p);
+
+                if(resInsert == 1){
+                    Toast.makeText(EntrenamientoActivity.this,"OK",Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(EntrenamientoActivity.this,"KO",Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });

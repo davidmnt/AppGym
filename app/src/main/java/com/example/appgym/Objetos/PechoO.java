@@ -1,4 +1,4 @@
-package com.example.appgym;
+package com.example.appgym.Objetos;
 
 import java.io.Serializable;
 
