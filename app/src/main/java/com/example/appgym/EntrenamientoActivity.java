@@ -13,12 +13,30 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appgym.Objetos.AductoresO;
+import com.example.appgym.Objetos.BicepsO;
+import com.example.appgym.Objetos.EspaldaO;
+import com.example.appgym.Objetos.FemoralO;
+import com.example.appgym.Objetos.GemeloO;
+import com.example.appgym.Objetos.HombroO;
 import com.example.appgym.Objetos.PechoO;
+import com.example.appgym.Objetos.PiernaO;
+import com.example.appgym.Objetos.TrapecioO;
+import com.example.appgym.Objetos.TricepsO;
 
 public class EntrenamientoActivity extends AppCompatActivity {
 
     static Modelo obj;
     static PechoO p;
+    static AductoresO a;
+    static BicepsO b;
+    static EspaldaO esp;
+    static FemoralO f;
+    static GemeloO ge;
+    static HombroO hom;
+    static PiernaO pie;
+    static TrapecioO tra;
+    static TricepsO tri;
 
     //Pecho
     public static String PressPlanoMaquina = "";
@@ -870,10 +888,49 @@ public class EntrenamientoActivity extends AppCompatActivity {
                     Log.e("Result", resultLog);
                 }
 
+                int resInsert = 0;
                 obj = new Modelo();
-                p= new PechoO(PressPlanoMaquina,PressInclinado,Contractora,Flexiones);
+                if(!PressPlanoMaquina.isEmpty() && !PressInclinado.isEmpty() && !Contractora.isEmpty() && !Flexiones.isEmpty()) {
+                    p = new PechoO(PressPlanoMaquina, PressInclinado, Contractora, Flexiones);
+                    resInsert =obj.insertaPesoPecho(EntrenamientoActivity.this,p);
+                }
+                if(!Aductores.isEmpty()) {
+                    a = new AductoresO(Aductores);
+                    resInsert =obj.insertaPesoAductores(EntrenamientoActivity.this,a);
+                }
+                if(!GemeloEnPrensa.isEmpty() && !GemeloUnaPierna.isEmpty() ) {
+                    ge = new GemeloO(GemeloEnPrensa, GemeloUnaPierna);
+                    resInsert =obj.insertaPesoGemelo(EntrenamientoActivity.this,ge);
+                }
+                if(!FemoralTumbado.isEmpty()) {
+                    f = new FemoralO(FemoralTumbado);
+                    resInsert =obj.insertaPesoFemoral(EntrenamientoActivity.this,f);
+                }
+                if(!ExtensionCuádriceps.isEmpty() && !Prensa.isEmpty() && !PrensaUnaPierna.isEmpty() ) {
+                    pie = new PiernaO(ExtensionCuádriceps, Prensa, PrensaUnaPierna);
+                    resInsert =obj.insertaPesoPierna(EntrenamientoActivity.this,pie);
+                }
+                if(!PullOver.isEmpty() && !RackPull.isEmpty() && !JalonPecho.isEmpty() && !RemoBarra.isEmpty() && !RemoT.isEmpty()) {
+                    esp = new EspaldaO(PullOver, RackPull, JalonPecho, RemoBarra, RemoT);
+                    resInsert =obj.insertaPesoEspalda(EntrenamientoActivity.this,esp);
+                }
+                if(!ElevacionesLatMancuernas.isEmpty() && !Pajaro.isEmpty() && !PressMaquina.isEmpty() && !LateralesSentado.isEmpty() && !LateralesPolea.isEmpty()) {
+                    hom = new HombroO(ElevacionesLatMancuernas, Pajaro, PressMaquina, LateralesSentado, LateralesPolea);
+                    resInsert =obj.insertaPesoHombro(EntrenamientoActivity.this,hom);
+                }
+                if(!CurlAlternoPie.isEmpty() && !CurlInvertido.isEmpty() ) {
+                    b = new BicepsO(CurlAlternoPie, CurlInvertido);
+                    resInsert =obj.insertaPesoBiceps(EntrenamientoActivity.this,b);
+                }
+                if(!EncogimientoPesado.isEmpty()) {
+                    tra = new TrapecioO(EncogimientoPesado);
+                    resInsert =obj.insertaPesoTrapecio(EntrenamientoActivity.this,tra);
+                }
+                if(!PressFrancesTumbado.isEmpty() && !PressFrancesSentado.isEmpty() && !TironPoleaEncimaDeLaCabeza.isEmpty() ) {
+                    tri = new TricepsO(PressFrancesTumbado, PressFrancesSentado, TironPoleaEncimaDeLaCabeza);
+                    resInsert =obj.insertaPesoTriceps(EntrenamientoActivity.this,tri);
+                }
 
-                int resInsert =obj.insertaPesoPecho(EntrenamientoActivity.this,p);
 
                 if(resInsert == 1){
                     Toast.makeText(EntrenamientoActivity.this,"OK",Toast.LENGTH_SHORT).show();
