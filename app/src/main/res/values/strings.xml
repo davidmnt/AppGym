@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppGym</string>
+    <string name="app_name">GymBro</string>
 
     <string-array name="vacio">
         <item>------</item>

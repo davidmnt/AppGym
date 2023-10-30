@@ -907,99 +907,223 @@ public class EntrenamientoActivity extends AppCompatActivity {
                 if(!PressPlanoMaquina.isEmpty() && !PressInclinado.isEmpty() && !Contractora.isEmpty() && !Flexiones.isEmpty()) {
                     p = new PechoO(PressPlanoMaquina, PressInclinado, Contractora, Flexiones);
                     resInsert =obj.insertaPesoPecho(EntrenamientoActivity.this,p);
-                }else if(!PressPlanoMaquina.isEmpty() && !PressInclinado.isEmpty() && !Contractora.isEmpty() && Flexiones.isEmpty()){
+                    PressPlanoMaquina= "";
+                    PressInclinado= "";
+                    Contractora= "";
+                    Flexiones = "";
+
+                }else if(!PressPlanoMaquina.isEmpty() && !PressInclinado.isEmpty() && !Contractora.isEmpty()){
                     p = new PechoO(PressPlanoMaquina, PressInclinado, Contractora, "");
                     resInsert =obj.insertaPesoPecho(EntrenamientoActivity.this,p);
+                    PressPlanoMaquina= "";
+                    PressInclinado= "";
+                    Contractora= "";
+                    Flexiones = "";
+
                 }else if(!PressPlanoMaquina.isEmpty() && !PressInclinado.isEmpty() && Contractora.isEmpty() && Flexiones.isEmpty()){
                     p = new PechoO(PressPlanoMaquina, PressInclinado, "", "");
                     resInsert =obj.insertaPesoPecho(EntrenamientoActivity.this,p);
-                }else if(!PressPlanoMaquina.isEmpty() && PressInclinado.isEmpty() && !Contractora.isEmpty() && Flexiones.isEmpty()){
+                    PressPlanoMaquina= "";
+                    PressInclinado= "";
+                    Contractora= "";
+                    Flexiones = "";
+
+                }else if(!PressPlanoMaquina.isEmpty() && PressInclinado.isEmpty() && Contractora.isEmpty() && Flexiones.isEmpty()){
                     p = new PechoO(PressPlanoMaquina, "", "", "");
                     resInsert =obj.insertaPesoPecho(EntrenamientoActivity.this,p);
+                    PressPlanoMaquina= "";
+                    PressInclinado= "";
+                    Contractora= "";
+                    Flexiones = "";
                 }
 
                 //ADUCTORES
                 if(!Aductores.isEmpty()) {
                     a = new AductoresO(Aductores);
                     resInsert =obj.insertaPesoAductores(EntrenamientoActivity.this,a);
+                    Aductores = "";
                 }
 
                 //GEMELO
                 if(!GemeloEnPrensa.isEmpty() && !GemeloUnaPierna.isEmpty() ) {
                     ge = new GemeloO(GemeloEnPrensa, GemeloUnaPierna);
                     resInsert =obj.insertaPesoGemelo(EntrenamientoActivity.this,ge);
+                    GemeloEnPrensa = "";
+                    GemeloUnaPierna = "";
+
                 }else if(!GemeloEnPrensa.isEmpty() && GemeloUnaPierna.isEmpty() ) {
                     ge = new GemeloO(GemeloEnPrensa, "");
                     resInsert =obj.insertaPesoGemelo(EntrenamientoActivity.this,ge);
+                    GemeloEnPrensa = "";
+                    GemeloUnaPierna = "";
                 }
 
                 //FEMORAL
                 if(!FemoralTumbado.isEmpty()) {
                     f = new FemoralO(FemoralTumbado);
                     resInsert =obj.insertaPesoFemoral(EntrenamientoActivity.this,f);
+                    FemoralTumbado = "";
                 }
 
                 //PIERNA
                 if(!ExtensionCuádriceps.isEmpty() && !Prensa.isEmpty() && !PrensaUnaPierna.isEmpty() ) {
                     pie = new PiernaO(ExtensionCuádriceps, Prensa, PrensaUnaPierna);
                     resInsert =obj.insertaPesoPierna(EntrenamientoActivity.this,pie);
+                    ExtensionCuádriceps= "";
+                    Prensa = "" ;
+                    PrensaUnaPierna = "";
+
                 }else if(!ExtensionCuádriceps.isEmpty() && !Prensa.isEmpty() && PrensaUnaPierna.isEmpty() ) {
                     pie = new PiernaO(ExtensionCuádriceps, Prensa, "");
                     resInsert =obj.insertaPesoPierna(EntrenamientoActivity.this,pie);
+                    ExtensionCuádriceps= "";
+                    Prensa = "" ;
+                    PrensaUnaPierna = "";
+
                 }else if(!ExtensionCuádriceps.isEmpty() && Prensa.isEmpty() && PrensaUnaPierna.isEmpty() ) {
                     pie = new PiernaO(ExtensionCuádriceps, "", "");
                     resInsert =obj.insertaPesoPierna(EntrenamientoActivity.this,pie);
+                    ExtensionCuádriceps= "";
+                    Prensa = "" ;
+                    PrensaUnaPierna = "";
                 }
 
                 //ESPALDA
                 if(!PullOver.isEmpty() && !RackPull.isEmpty() && !JalonPecho.isEmpty() && !RemoBarra.isEmpty() && !RemoT.isEmpty()) {
                     esp = new EspaldaO(PullOver, RackPull, JalonPecho, RemoBarra, RemoT);
                     resInsert =obj.insertaPesoEspalda(EntrenamientoActivity.this,esp);
+                    PullOver= "";
+                    RackPull= "";
+                    JalonPecho= "";
+                    RemoBarra= "";
+                    RemoT = "";
+
+                }else if(!PullOver.isEmpty() && !RackPull.isEmpty() && !JalonPecho.isEmpty() && !RemoBarra.isEmpty() && RemoT.isEmpty()) {
+                    esp = new EspaldaO(PullOver, RackPull, JalonPecho, RemoBarra, "");
+                    resInsert =obj.insertaPesoEspalda(EntrenamientoActivity.this,esp);
+                    PullOver= "";
+                    RackPull= "";
+                    JalonPecho= "";
+                    RemoBarra= "";
+                    RemoT = "";
+
+                }else if(!PullOver.isEmpty() && !RackPull.isEmpty() && !JalonPecho.isEmpty() && RemoBarra.isEmpty() && RemoT.isEmpty()) {
+                    esp = new EspaldaO(PullOver, RackPull, JalonPecho, "", "");
+                    resInsert =obj.insertaPesoEspalda(EntrenamientoActivity.this,esp);
+                    PullOver= "";
+                    RackPull= "";
+                    JalonPecho= "";
+                    RemoBarra= "";
+                    RemoT = "";
+
+                }else if(!PullOver.isEmpty() && !RackPull.isEmpty() && JalonPecho.isEmpty() && RemoBarra.isEmpty() && RemoT.isEmpty()) {
+                    esp = new EspaldaO(PullOver, RackPull, "", "", "");
+                    resInsert =obj.insertaPesoEspalda(EntrenamientoActivity.this,esp);
+                    PullOver= "";
+                    RackPull= "";
+                    JalonPecho= "";
+                    RemoBarra= "";
+                    RemoT = "";
+
+                }else if(!PullOver.isEmpty() && RackPull.isEmpty() && JalonPecho.isEmpty() && RemoBarra.isEmpty() && RemoT.isEmpty()) {
+                    esp = new EspaldaO(PullOver, "", "", "", "");
+                    resInsert =obj.insertaPesoEspalda(EntrenamientoActivity.this,esp);
+                    PullOver= "";
+                    RackPull= "";
+                    JalonPecho= "";
+                    RemoBarra= "";
+                    RemoT = "";
                 }
 
                 //HOMBRO
                 if(!ElevacionesLatMancuernas.isEmpty() && !Pajaro.isEmpty() && !PressMaquina.isEmpty() && !LateralesSentado.isEmpty() && !LateralesPolea.isEmpty()) {
                     hom = new HombroO(ElevacionesLatMancuernas, Pajaro, PressMaquina, LateralesSentado, LateralesPolea);
                     resInsert =obj.insertaPesoHombro(EntrenamientoActivity.this,hom);
+                    ElevacionesLatMancuernas= "";
+                    Pajaro= "";
+                    PressMaquina= "";
+                    LateralesSentado= "";
+                    LateralesPolea = "";
+
                 }else if(!ElevacionesLatMancuernas.isEmpty() && !Pajaro.isEmpty() && !PressMaquina.isEmpty() && !LateralesSentado.isEmpty() && LateralesPolea.isEmpty()) {
                     hom = new HombroO(ElevacionesLatMancuernas, Pajaro, PressMaquina, LateralesSentado, "");
                     resInsert =obj.insertaPesoHombro(EntrenamientoActivity.this,hom);
+                    ElevacionesLatMancuernas= "";
+                    Pajaro= "";
+                    PressMaquina= "";
+                    LateralesSentado= "";
+                    LateralesPolea = "";
+
                 }else if(!ElevacionesLatMancuernas.isEmpty() && !Pajaro.isEmpty() && !PressMaquina.isEmpty() && LateralesSentado.isEmpty() && LateralesPolea.isEmpty()) {
                     hom = new HombroO(ElevacionesLatMancuernas, Pajaro, PressMaquina, "", "");
                     resInsert =obj.insertaPesoHombro(EntrenamientoActivity.this,hom);
+                    ElevacionesLatMancuernas= "";
+                    Pajaro= "";
+                    PressMaquina= "";
+                    LateralesSentado= "";
+                    LateralesPolea = "";
+
                 }else if(!ElevacionesLatMancuernas.isEmpty() && !Pajaro.isEmpty() && PressMaquina.isEmpty() && LateralesSentado.isEmpty() && LateralesPolea.isEmpty()) {
                     hom = new HombroO(ElevacionesLatMancuernas, Pajaro, "", "", "");
                     resInsert =obj.insertaPesoHombro(EntrenamientoActivity.this,hom);
+                    ElevacionesLatMancuernas= "";
+                    Pajaro= "";
+                    PressMaquina= "";
+                    LateralesSentado= "";
+                    LateralesPolea = "";
+
                 }else if(!ElevacionesLatMancuernas.isEmpty() && Pajaro.isEmpty() && PressMaquina.isEmpty() && LateralesSentado.isEmpty() && LateralesPolea.isEmpty()) {
                     hom = new HombroO(ElevacionesLatMancuernas, "", "", "", "");
                     resInsert =obj.insertaPesoHombro(EntrenamientoActivity.this,hom);
+                    ElevacionesLatMancuernas= "";
+                    Pajaro= "";
+                    PressMaquina= "";
+                    LateralesSentado= "";
+                    LateralesPolea = "";
                 }
 
                 //BICEPS
                 if(!CurlAlternoPie.isEmpty() && !CurlInvertido.isEmpty() ) {
                     b = new BicepsO(CurlAlternoPie, CurlInvertido);
                     resInsert =obj.insertaPesoBiceps(EntrenamientoActivity.this,b);
+                    CurlAlternoPie = "";
+                    CurlInvertido = "";
+
                 }else if(!CurlAlternoPie.isEmpty() && CurlInvertido.isEmpty() ) {
                     b = new BicepsO(CurlAlternoPie, "");
                     resInsert =obj.insertaPesoBiceps(EntrenamientoActivity.this,b);
+                    CurlAlternoPie = "";
+                    CurlInvertido = "";
                 }
 
                 //TRAPECIO
                 if(!EncogimientoPesado.isEmpty()) {
                     tra = new TrapecioO(EncogimientoPesado);
                     resInsert =obj.insertaPesoTrapecio(EntrenamientoActivity.this,tra);
+                    EncogimientoPesado = "";
                 }
 
                 //TRICEPS
                 if(!PressFrancesTumbado.isEmpty() && !PressFrancesSentado.isEmpty() && !TironPoleaEncimaDeLaCabeza.isEmpty() ) {
                     tri = new TricepsO(PressFrancesTumbado, PressFrancesSentado, TironPoleaEncimaDeLaCabeza);
                     resInsert =obj.insertaPesoTriceps(EntrenamientoActivity.this,tri);
+                    PressFrancesTumbado= "";
+                    PressFrancesSentado= "";
+                    TironPoleaEncimaDeLaCabeza = "";
+
                 }else if(!PressFrancesTumbado.isEmpty() && !PressFrancesSentado.isEmpty() && TironPoleaEncimaDeLaCabeza.isEmpty() ) {
                     tri = new TricepsO(PressFrancesTumbado, PressFrancesSentado, "");
                     resInsert =obj.insertaPesoTriceps(EntrenamientoActivity.this,tri);
+                    PressFrancesTumbado= "";
+                    PressFrancesSentado= "";
+                    TironPoleaEncimaDeLaCabeza = "";
+
                 }else if(!PressFrancesTumbado.isEmpty() && PressFrancesSentado.isEmpty() && TironPoleaEncimaDeLaCabeza.isEmpty() ) {
                     tri = new TricepsO(PressFrancesTumbado, "", "");
                     resInsert =obj.insertaPesoTriceps(EntrenamientoActivity.this,tri);
+                    PressFrancesTumbado= "";
+                    PressFrancesSentado= "";
+                    TironPoleaEncimaDeLaCabeza = "";
                 }
                 
                 if(resInsert == 1){

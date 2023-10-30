@@ -14,11 +14,23 @@ import com.example.appgym.Objetos.PiernaO;
 import com.example.appgym.Objetos.TrapecioO;
 import com.example.appgym.Objetos.TricepsO;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Modelo {
 
-    Date fecha = new Date();
+    Calendar calen = Calendar.getInstance();
+    int mes = calen.get(Calendar.MONTH);
+    int dia = calen.get(Calendar.DAY_OF_MONTH);
+
+    String fecha = mes + "/" + dia;
+
+
+
+
+
 
     SQLiteDatabase getConn(Context context){
     conexionSQLlite conn = new conexionSQLlite(context, "pesos", null, 1);
@@ -26,7 +38,7 @@ public class Modelo {
     return db;
     }
 
-    int insertaPesoPecho(Context context, PechoO p){
+    public int insertaPesoPecho(Context context, PechoO p){
         int res=0;
 
         String sql = "INSERT INTO PECHO (id,pressPlanoMaquina,pressInclinado,contractora,flexiones) VALUES ('"+fecha+"','"+p.getPressPlanoMaquina()+"','"+p.getPressInclinado()+"'," +
@@ -42,7 +54,7 @@ public class Modelo {
         return res;
     }
 
-    int insertaPesoEspalda(Context context, EspaldaO e){
+    public int insertaPesoEspalda(Context context, EspaldaO e){
         int res=0;
 
         String sql = "INSERT INTO ESPALDA (id,PullOver,RackPull,JalonPecho,RemoBarra,RemoT) VALUES ('"+fecha+"','"+e.getPullOver()+"','"+e.getRackPull()+"'," +
@@ -58,7 +70,7 @@ public class Modelo {
         return res;
     }
 
-    int insertaPesoPierna(Context context, PiernaO p){
+    public int insertaPesoPierna(Context context, PiernaO p){
         int res=0;
 
         String sql = "INSERT INTO PIERNA (id,ExtensionCuádriceps,Prensa,PrensaUnaPierna) VALUES ('"+fecha+"','"+p.getExtensionCuádriceps()+"','"+p.getPrensa()+"'," +
@@ -74,7 +86,7 @@ public class Modelo {
         return res;
     }
 
-    int insertaPesoAductores(Context context, AductoresO ad){
+    public int insertaPesoAductores(Context context, AductoresO ad){
         int res=0;
 
         String sql = "INSERT INTO ADUCTORES (id,Aductores) VALUES ('"+fecha+"','"+ad.getAductores()+"')";
@@ -89,7 +101,7 @@ public class Modelo {
         return res;
     }
 
-    int insertaPesoGemelo(Context context, GemeloO g){
+    public int insertaPesoGemelo(Context context, GemeloO g){
         int res=0;
 
         String sql = "INSERT INTO GEMELO (id,GemeloEnPrensa,GemeloUnaPierna) VALUES ('"+fecha+"','"+g.getGemeloEnPrensa()+"','"+g.getGemeloUnaPierna()+"')";
@@ -103,7 +115,7 @@ public class Modelo {
         }
         return res;
     }
-    int insertaPesoFemoral(Context context, FemoralO f){
+    public int insertaPesoFemoral(Context context, FemoralO f){
         int res=0;
 
         String sql = "INSERT INTO FEMORAL (id,FemoralTumbado) VALUES ('"+fecha+"','"+f.getFemoralTumbado()+"')";
@@ -118,7 +130,7 @@ public class Modelo {
         return res;
     }
 
-    int insertaPesoHombro(Context context, HombroO h){
+    public int insertaPesoHombro(Context context, HombroO h){
         int res=0;
 
         String sql = "INSERT INTO HOMBRO (id,ElevacionesLatMancuernas,Pajaro,PressMaquina,LateralesSentado,LateralesPolea) VALUES ('"+fecha+"','"+h.getElevacionesLatMancuernas()+"','"+h.getPajaro()+"'," +
@@ -134,7 +146,7 @@ public class Modelo {
         return res;
     }
 
-    int insertaPesoTrapecio(Context context, TrapecioO t){
+    public int insertaPesoTrapecio(Context context, TrapecioO t){
         int res=0;
 
         String sql = "INSERT INTO TRAPECIO (id,EncogimientoPesado) VALUES ('"+fecha+"','"+t.getEncogimientoPesado()+"')";
@@ -149,7 +161,7 @@ public class Modelo {
         return res;
     }
 
-    int insertaPesoTriceps(Context context, TricepsO tr){
+    public int insertaPesoTriceps(Context context, TricepsO tr){
         int res=0;
 
         String sql = "INSERT INTO TRICEPS (id,PressFrancesTumbado,PressFrancesSentado,TironPoleaEncimaDeLaCabeza) VALUES ('"+fecha+"','"+tr.getPressFrancesTumbado()+"'," +
@@ -165,7 +177,7 @@ public class Modelo {
         return res;
     }
 
-    int insertaPesoBiceps(Context context, BicepsO b){
+    public int insertaPesoBiceps(Context context, BicepsO b){
         int res=0;
 
         String sql = "INSERT INTO BICEPS (id,CurlAlternoPie,CurlInvertido) VALUES ('"+fecha+"','"+b.getCurlAlternoPie()+"'," +

@@ -22,6 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         ImageButton botontablaEntrenamiento = findViewById(R.id.tablaEntrenamiento);
         ImageButton botontablaDieta = findViewById(R.id.tablaDieta);
         ImageButton entrenamiento = findViewById(R.id.entrenamiento);
+        ImageButton resultados = findViewById(R.id.resultEntrenos);
 
         botontablaEntrenamiento.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +45,12 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        resultados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mandarResultados();
+            }
+        });
     }
 
     private void mandartablaEntrenamiento(){
@@ -58,6 +65,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private void mandarEntrenamiento(){
         Intent i = new Intent(this, EntrenamientoActivity.class);
+        startActivity(i);
+    }
+
+    private void mandarResultados(){
+        Intent i = new Intent(this, ResultadosActivity.class);
         startActivity(i);
     }
 }
