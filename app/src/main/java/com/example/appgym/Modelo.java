@@ -1,6 +1,7 @@
 package com.example.appgym;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.appgym.Objetos.AductoresO;
@@ -26,11 +27,6 @@ public class Modelo {
     int dia = calen.get(Calendar.DAY_OF_MONTH);
 
     String fecha = mes + "/" + dia;
-
-
-
-
-
 
     SQLiteDatabase getConn(Context context){
     conexionSQLlite conn = new conexionSQLlite(context, "pesos", null, 1);
@@ -192,6 +188,8 @@ public class Modelo {
         }
         return res;
     }
+
+
 
 
 
