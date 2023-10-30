@@ -43,6 +43,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
     public static String PressInclinado = "";
     public static String Contractora = "";
     public static String Flexiones = "";
+
     //Hombro
     public static String ElevacionesLatMancuernas = "";
 
@@ -374,7 +375,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
                             arrayDesplegablesEjercicios[i].setAdapter(adapterAductores);
                         }
                         break;
-                    case "Gemlo":
+                    case "Gemelo":
 
                         for ( i = 0; i < 5; i++) {
 
@@ -466,7 +467,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
                             arrayDesplegablesEjercicios[i].setAdapter(adapterAductores);
                         }
                         break;
-                    case "Gemlo":
+                    case "Gemelo":
 
                         for (i = 5; i < 9; i++) {
 
@@ -558,7 +559,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
                             arrayDesplegablesEjercicios[i].setAdapter(adapterAductores);
                         }
                         break;
-                    case "Gemlo":
+                    case "Gemelo":
 
                         for (i = 9; i < 13; i++) {
 
@@ -808,8 +809,8 @@ public class EntrenamientoActivity extends AppCompatActivity {
 
                         for (int j = 0; j < arrayEjer.length; j++) {
 
-                            if (arrayEjer[j].toString().equals("PrensaUnaPierna")) {
-                                PrensaUnaPierna = arrayText[i].getText().toString();
+                            if (arrayEjer[j].toString().equals("GemeloEnPrensa")) {
+                                GemeloEnPrensa = arrayText[i].getText().toString();
                                 break;
                             }
                         }
@@ -881,6 +882,16 @@ public class EntrenamientoActivity extends AppCompatActivity {
                         }
                         resultLog = "En el ejercicio: " + arrayDesplegablesEjercicios[i].getSelectedItem().toString() + " he levantado: " + LateralesPolea;
 
+                    }else if(arrayDesplegablesEjercicios[i].getSelectedItem().toString().equals("Encogimiento pesado")) {
+                        for (int j = 0; j < arrayEjer.length; j++) {
+
+                            if (arrayEjer[j].toString().equals("EncogimientoPesado")) {
+                                EncogimientoPesado = arrayText[i].getText().toString();
+                                break;
+                            }
+                        }
+                        resultLog = "En el ejercicio: " + arrayDesplegablesEjercicios[i].getSelectedItem().toString() + " he levantado: " + EncogimientoPesado;
+
                     } else {
                         resultLog = "Desplegable vacio";
                     }
@@ -889,55 +900,113 @@ public class EntrenamientoActivity extends AppCompatActivity {
                 }
 
                 int resInsert = 0;
+
                 obj = new Modelo();
+
+                //PECHO
                 if(!PressPlanoMaquina.isEmpty() && !PressInclinado.isEmpty() && !Contractora.isEmpty() && !Flexiones.isEmpty()) {
                     p = new PechoO(PressPlanoMaquina, PressInclinado, Contractora, Flexiones);
                     resInsert =obj.insertaPesoPecho(EntrenamientoActivity.this,p);
+                }else if(!PressPlanoMaquina.isEmpty() && !PressInclinado.isEmpty() && !Contractora.isEmpty() && Flexiones.isEmpty()){
+                    p = new PechoO(PressPlanoMaquina, PressInclinado, Contractora, "");
+                    resInsert =obj.insertaPesoPecho(EntrenamientoActivity.this,p);
+                }else if(!PressPlanoMaquina.isEmpty() && !PressInclinado.isEmpty() && Contractora.isEmpty() && Flexiones.isEmpty()){
+                    p = new PechoO(PressPlanoMaquina, PressInclinado, "", "");
+                    resInsert =obj.insertaPesoPecho(EntrenamientoActivity.this,p);
+                }else if(!PressPlanoMaquina.isEmpty() && PressInclinado.isEmpty() && !Contractora.isEmpty() && Flexiones.isEmpty()){
+                    p = new PechoO(PressPlanoMaquina, "", "", "");
+                    resInsert =obj.insertaPesoPecho(EntrenamientoActivity.this,p);
                 }
+
+                //ADUCTORES
                 if(!Aductores.isEmpty()) {
                     a = new AductoresO(Aductores);
                     resInsert =obj.insertaPesoAductores(EntrenamientoActivity.this,a);
                 }
+
+                //GEMELO
                 if(!GemeloEnPrensa.isEmpty() && !GemeloUnaPierna.isEmpty() ) {
                     ge = new GemeloO(GemeloEnPrensa, GemeloUnaPierna);
                     resInsert =obj.insertaPesoGemelo(EntrenamientoActivity.this,ge);
+                }else if(!GemeloEnPrensa.isEmpty() && GemeloUnaPierna.isEmpty() ) {
+                    ge = new GemeloO(GemeloEnPrensa, "");
+                    resInsert =obj.insertaPesoGemelo(EntrenamientoActivity.this,ge);
                 }
+
+                //FEMORAL
                 if(!FemoralTumbado.isEmpty()) {
                     f = new FemoralO(FemoralTumbado);
                     resInsert =obj.insertaPesoFemoral(EntrenamientoActivity.this,f);
                 }
+
+                //PIERNA
                 if(!ExtensionCuádriceps.isEmpty() && !Prensa.isEmpty() && !PrensaUnaPierna.isEmpty() ) {
                     pie = new PiernaO(ExtensionCuádriceps, Prensa, PrensaUnaPierna);
                     resInsert =obj.insertaPesoPierna(EntrenamientoActivity.this,pie);
+                }else if(!ExtensionCuádriceps.isEmpty() && !Prensa.isEmpty() && PrensaUnaPierna.isEmpty() ) {
+                    pie = new PiernaO(ExtensionCuádriceps, Prensa, "");
+                    resInsert =obj.insertaPesoPierna(EntrenamientoActivity.this,pie);
+                }else if(!ExtensionCuádriceps.isEmpty() && Prensa.isEmpty() && PrensaUnaPierna.isEmpty() ) {
+                    pie = new PiernaO(ExtensionCuádriceps, "", "");
+                    resInsert =obj.insertaPesoPierna(EntrenamientoActivity.this,pie);
                 }
+
+                //ESPALDA
                 if(!PullOver.isEmpty() && !RackPull.isEmpty() && !JalonPecho.isEmpty() && !RemoBarra.isEmpty() && !RemoT.isEmpty()) {
                     esp = new EspaldaO(PullOver, RackPull, JalonPecho, RemoBarra, RemoT);
                     resInsert =obj.insertaPesoEspalda(EntrenamientoActivity.this,esp);
                 }
+
+                //HOMBRO
                 if(!ElevacionesLatMancuernas.isEmpty() && !Pajaro.isEmpty() && !PressMaquina.isEmpty() && !LateralesSentado.isEmpty() && !LateralesPolea.isEmpty()) {
                     hom = new HombroO(ElevacionesLatMancuernas, Pajaro, PressMaquina, LateralesSentado, LateralesPolea);
                     resInsert =obj.insertaPesoHombro(EntrenamientoActivity.this,hom);
+                }else if(!ElevacionesLatMancuernas.isEmpty() && !Pajaro.isEmpty() && !PressMaquina.isEmpty() && !LateralesSentado.isEmpty() && LateralesPolea.isEmpty()) {
+                    hom = new HombroO(ElevacionesLatMancuernas, Pajaro, PressMaquina, LateralesSentado, "");
+                    resInsert =obj.insertaPesoHombro(EntrenamientoActivity.this,hom);
+                }else if(!ElevacionesLatMancuernas.isEmpty() && !Pajaro.isEmpty() && !PressMaquina.isEmpty() && LateralesSentado.isEmpty() && LateralesPolea.isEmpty()) {
+                    hom = new HombroO(ElevacionesLatMancuernas, Pajaro, PressMaquina, "", "");
+                    resInsert =obj.insertaPesoHombro(EntrenamientoActivity.this,hom);
+                }else if(!ElevacionesLatMancuernas.isEmpty() && !Pajaro.isEmpty() && PressMaquina.isEmpty() && LateralesSentado.isEmpty() && LateralesPolea.isEmpty()) {
+                    hom = new HombroO(ElevacionesLatMancuernas, Pajaro, "", "", "");
+                    resInsert =obj.insertaPesoHombro(EntrenamientoActivity.this,hom);
+                }else if(!ElevacionesLatMancuernas.isEmpty() && Pajaro.isEmpty() && PressMaquina.isEmpty() && LateralesSentado.isEmpty() && LateralesPolea.isEmpty()) {
+                    hom = new HombroO(ElevacionesLatMancuernas, "", "", "", "");
+                    resInsert =obj.insertaPesoHombro(EntrenamientoActivity.this,hom);
                 }
+
+                //BICEPS
                 if(!CurlAlternoPie.isEmpty() && !CurlInvertido.isEmpty() ) {
                     b = new BicepsO(CurlAlternoPie, CurlInvertido);
                     resInsert =obj.insertaPesoBiceps(EntrenamientoActivity.this,b);
+                }else if(!CurlAlternoPie.isEmpty() && CurlInvertido.isEmpty() ) {
+                    b = new BicepsO(CurlAlternoPie, "");
+                    resInsert =obj.insertaPesoBiceps(EntrenamientoActivity.this,b);
                 }
+
+                //TRAPECIO
                 if(!EncogimientoPesado.isEmpty()) {
                     tra = new TrapecioO(EncogimientoPesado);
                     resInsert =obj.insertaPesoTrapecio(EntrenamientoActivity.this,tra);
                 }
+
+                //TRICEPS
                 if(!PressFrancesTumbado.isEmpty() && !PressFrancesSentado.isEmpty() && !TironPoleaEncimaDeLaCabeza.isEmpty() ) {
                     tri = new TricepsO(PressFrancesTumbado, PressFrancesSentado, TironPoleaEncimaDeLaCabeza);
                     resInsert =obj.insertaPesoTriceps(EntrenamientoActivity.this,tri);
+                }else if(!PressFrancesTumbado.isEmpty() && !PressFrancesSentado.isEmpty() && TironPoleaEncimaDeLaCabeza.isEmpty() ) {
+                    tri = new TricepsO(PressFrancesTumbado, PressFrancesSentado, "");
+                    resInsert =obj.insertaPesoTriceps(EntrenamientoActivity.this,tri);
+                }else if(!PressFrancesTumbado.isEmpty() && PressFrancesSentado.isEmpty() && TironPoleaEncimaDeLaCabeza.isEmpty() ) {
+                    tri = new TricepsO(PressFrancesTumbado, "", "");
+                    resInsert =obj.insertaPesoTriceps(EntrenamientoActivity.this,tri);
                 }
-
-
+                
                 if(resInsert == 1){
                     Toast.makeText(EntrenamientoActivity.this,"OK",Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(EntrenamientoActivity.this,"KO",Toast.LENGTH_SHORT).show();
                 }
-
 
             }
         });

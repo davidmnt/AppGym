@@ -74,10 +74,10 @@ public class Modelo {
         return res;
     }
 
-    int insertaPesoAductores(Context context, AductoresO a){
+    int insertaPesoAductores(Context context, AductoresO ad){
         int res=0;
 
-        String sql = "INSERT INTO ADUCTORES (id,Aductores) VALUES ('"+fecha+"','"+a.getAductores()+"')";
+        String sql = "INSERT INTO ADUCTORES (id,Aductores) VALUES ('"+fecha+"','"+ad.getAductores()+"')";
         SQLiteDatabase db = this.getConn(context);
 
         try {
@@ -121,7 +121,7 @@ public class Modelo {
     int insertaPesoHombro(Context context, HombroO h){
         int res=0;
 
-        String sql = "INSERT INTO HOMBRRO (id,ElevacionesLatMancuernas,Pajaro,PressMaquina,LateralesSentado,LateralesPolea) VALUES ('"+fecha+"','"+h.getElevacionesLatMancuernas()+"','"+h.getPajaro()+"'," +
+        String sql = "INSERT INTO HOMBRO (id,ElevacionesLatMancuernas,Pajaro,PressMaquina,LateralesSentado,LateralesPolea) VALUES ('"+fecha+"','"+h.getElevacionesLatMancuernas()+"','"+h.getPajaro()+"'," +
                 "'"+h.getPressMaquina()+"','"+h.getLateralesSentado()+"','"+h.getLateralesPolea()+"')";
         SQLiteDatabase db = this.getConn(context);
 
@@ -153,7 +153,7 @@ public class Modelo {
         int res=0;
 
         String sql = "INSERT INTO TRICEPS (id,PressFrancesTumbado,PressFrancesSentado,TironPoleaEncimaDeLaCabeza) VALUES ('"+fecha+"','"+tr.getPressFrancesTumbado()+"'," +
-                "'"+tr.getTironPoleaEncimaDeLaCabeza()+"')";
+                "'"+tr.getPressFrancesSentado()+"','"+tr.getTironPoleaEncimaDeLaCabeza()+"')";
         SQLiteDatabase db = this.getConn(context);
 
         try {
