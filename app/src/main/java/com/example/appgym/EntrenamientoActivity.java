@@ -1003,9 +1003,9 @@ public class EntrenamientoActivity extends AppCompatActivity {
                 }
                 
                 if(resInsert == 1){
-                    Toast.makeText(EntrenamientoActivity.this,"OK",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EntrenamientoActivity.this,"Enviado correctamente",Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(EntrenamientoActivity.this,"KO",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EntrenamientoActivity.this,"No enviado",Toast.LENGTH_SHORT).show();
                 }
 
             }
