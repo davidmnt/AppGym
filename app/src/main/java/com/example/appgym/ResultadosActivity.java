@@ -18,6 +18,10 @@ public class ResultadosActivity extends AppCompatActivity {
     private static String fec;
     private static Cursor cur;
     static Modelo m = new Modelo();
+    static boolean importante = false;
+    static boolean secundaria = false;
+    static boolean terciaria = false;
+    static boolean cuaternario = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,24 +53,21 @@ public class ResultadosActivity extends AppCompatActivity {
         TextView decimonovenoEj = findViewById(R.id.diecinueve);
 
 
-        TextView[] arrayTextEjPecho = {primerEj, segundoEj, tercerEj, cuartoEj};
-        TextView[] arrayTextEjEspalda = {quintoEj,sextoEj, septimoEj, octaboEj, novenoEj};
-        TextView[] arrayTextEjPierna = {decimoquintoEj,decimosextoEj,decimoseptimoEj};
-        TextView[] arrayTextEjHombro = {decimoEj,undecimoEj, duodecimoEj, decimotercerEj, decimoCuartoEj};
 
-
-        TextView[] arrayTextEjTriceps = {sextoEj, septimoEj, octaboEj, novenoEj,decimoEj};
-        TextView[] arrayTextEjFemoral= {sextoEj, septimoEj, octaboEj, novenoEj,decimoEj};
-        TextView[] arrayTextEjBiceps = { undecimoEj, duodecimoEj, decimotercerEj, decimoCuartoEj};
-        TextView[] arrayTextEjAductores = { undecimoEj, duodecimoEj, decimotercerEj, decimoCuartoEj};
-        TextView[] arrayTextEjTrapecio = { undecimoEj, duodecimoEj, decimotercerEj, decimoCuartoEj};
-        TextView[] arrayTextEjGemelo = {decimoquintoEj, decimosextoEj};
-
+        TextView[] arrayTextEjImport = {primerEj, segundoEj, tercerEj, cuartoEj,quintoEj};
+        TextView[] arrayTextEjSecundarios = {sextoEj, septimoEj, octaboEj, novenoEj,decimoEj};
+        TextView[] arrayTextEjTerciarios = { undecimoEj, duodecimoEj, decimotercerEj, decimoCuartoEj};
+        TextView[] arrayTextEjCuaternarios = {decimoquintoEj, decimosextoEj};
+        TextView[] arrayTextTricepsEj = {decimoseptimoEj, decimooctavoEj,decimonovenoEj};
 
         calendario.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int año, int mes, int dia) {
 
+                importante = false;
+                secundaria = false;
+                terciaria = false;
+                cuaternario = false;
                 fec = (mes + 1) + "/" + dia;
                 String[] parametroBuscar = {fec};
 
@@ -281,103 +282,133 @@ public class ResultadosActivity extends AppCompatActivity {
                     //---------------------------------------------------------------------------------------------------------------------------------------
 
                     //Pecho
-                    for (int i = 0; i < objDatosPecho.length; i++) {
+                    if(importante == false) {
 
-                        if (!objDatosPecho[i].isEmpty()) {
-                            arrayTextEjPecho[i].setText(objDatosPecho[i].toString());
-                        }else{
-                            arrayTextEjPecho[i].setText("");
+                        for (int i = 0; i < objDatosPecho.length; i++) {
+
+                            if (!objDatosPecho[i].isEmpty()) {
+                                arrayTextEjImport[i].setText(objDatosPecho[i].toString());
+                                importante = true;
+                            } else {
+                                arrayTextEjImport[i].setText("");
+                            }
                         }
                     }
 
-
                     //Espalda
-                    for (int i = 0; i < objDatosEspalda.length; i++) {
+                    if(importante == false) {
+                        for (int i = 0; i < objDatosEspalda.length; i++) {
 
-                        if (!objDatosEspalda[i].isEmpty()) {
-                            arrayTextEjEspalda[i].setText(objDatosEspalda[i].toString());
-                        }else{
-                            arrayTextEjEspalda[i].setText("");
+                            if (!objDatosEspalda[i].isEmpty()) {
+                                arrayTextEjImport[i].setText(objDatosEspalda[i].toString());
+                                importante = true;
+                            } else {
+                                arrayTextEjImport[i].setText("");
+                            }
                         }
                     }
 
                     //Hombro
-                    for (int i = 0; i < objDatosHombro.length; i++) {
+                    if(secundaria == false) {
+                        for (int i = 0; i < objDatosHombro.length; i++) {
 
-                        if (!objDatosHombro[i].isEmpty()) {
-                            arrayTextEjHombro[i].setText(objDatosHombro[i].toString());
-                        }else{
-                            arrayTextEjHombro[i].setText("");
+                            if (!objDatosHombro[i].isEmpty()) {
+                                arrayTextEjSecundarios[i].setText(objDatosHombro[i].toString());
+                                secundaria = true;
+                            } else {
+                                arrayTextEjSecundarios[i].setText("");
+                            }
                         }
                     }
 
                     //Biceps
-                    for (int i = 0; i < objDatosBiceps.length; i++) {
+                    if(terciaria == false) {
+                        for (int i = 0; i < objDatosBiceps.length; i++) {
 
-                        if (!objDatosBiceps[i].isEmpty()) {
-                            arrayTextEjBiceps[i].setText(objDatosBiceps[i].toString());
-                        }else{
-                            arrayTextEjBiceps[i].setText("");
+                            if (!objDatosBiceps[i].isEmpty()) {
+                                arrayTextEjTerciarios[i].setText(objDatosBiceps[i].toString());
+                                terciaria = true;
+                            } else {
+                                arrayTextEjTerciarios[i].setText("");
+                            }
                         }
                     }
 
                     //Triceps
-                    for (int i = 0; i < objDatosTriceps.length; i++) {
+                    if(secundaria == false) {
+                        for (int i = 0; i < objDatosTriceps.length; i++) {
 
-                        if (!objDatosTriceps[i].isEmpty()) {
-                            arrayTextEjTriceps[i].setText(objDatosTriceps[i].toString());
-                        }else{
-                            arrayTextEjTriceps[i].setText("");
+                            if (!objDatosTriceps[i].isEmpty()) {
+                                arrayTextEjSecundarios[i].setText(objDatosTriceps[i].toString());
+                                secundaria = true;
+                            } else {
+                                arrayTextEjSecundarios[i].setText("");
+                            }
                         }
                     }
 
                     //Pierna
-                    for (int i = 0; i < objDatosPierna.length; i++) {
+                    if(importante == false) {
+                        for (int i = 0; i < objDatosPierna.length; i++) {
 
-                        if (!objDatosPierna[i].isEmpty()) {
-                            arrayTextEjPierna[i].setText(objDatosPierna[i].toString());
-                        }else{
-                            arrayTextEjPierna[i].setText("");
+                            if (!objDatosPierna[i].isEmpty()) {
+                                arrayTextEjImport[i].setText(objDatosPierna[i].toString());
+                                importante = true;
+                            } else {
+                                arrayTextEjImport[i].setText("");
+                            }
                         }
                     }
 
                     //Aductor
-                    for (int i = 0; i < objDatosAductores.length; i++) {
+                    if(terciaria == false) {
+                        for (int i = 0; i < objDatosAductores.length; i++) {
 
-                        if (!objDatosAductores[i].isEmpty()) {
-                            arrayTextEjAductores[i].setText(objDatosAductores[i].toString());
-                        }else{
-                            arrayTextEjAductores[i].setText("");
+                            if (!objDatosAductores[i].isEmpty()) {
+                                arrayTextEjTerciarios[i].setText(objDatosAductores[i].toString());
+                                terciaria = true;
+                            } else {
+                                arrayTextEjTerciarios[i].setText("");
+                            }
                         }
                     }
 
                     //Gemelo
-                    for (int i = 0; i < objDatosGemelo.length; i++) {
+                    if(cuaternario = false) {
+                        for (int i = 0; i < objDatosGemelo.length; i++) {
 
-                        if (!objDatosGemelo[i].isEmpty()) {
-                            arrayTextEjGemelo[i].setText(objDatosGemelo[i].toString());
-                        }else{
-                            arrayTextEjGemelo[i].setText("");
+                            if (!objDatosGemelo[i].isEmpty()) {
+                                arrayTextEjCuaternarios[i].setText(objDatosGemelo[i].toString());
+                                cuaternario = true;
+                            } else {
+                                arrayTextEjCuaternarios[i].setText("");
+                            }
                         }
                     }
 
                     //Femoral
-                    for (int i = 0; i < objDatosFemoral.length; i++) {
+                    if(secundaria == false) {
+                        for (int i = 0; i < objDatosFemoral.length; i++) {
 
-                        if (!objDatosFemoral[i].isEmpty()) {
-                            arrayTextEjFemoral[i].setText(objDatosFemoral[i].toString());
-                        }else{
-                            arrayTextEjFemoral[i].setText("");
+                            if (!objDatosFemoral[i].isEmpty()) {
+                                arrayTextEjSecundarios[i].setText(objDatosFemoral[i].toString());
+                                secundaria = true;
+                            } else {
+                                arrayTextEjSecundarios[i].setText("");
+                            }
                         }
                     }
 
                     //Trapecio
-                    for (int i = 0; i < objDatosTrapecio.length; i++) {
+                    if(terciaria == false) {
+                        for (int i = 0; i < objDatosTrapecio.length; i++) {
 
-                        if (!objDatosTrapecio[i].isEmpty()) {
-                            arrayTextEjTrapecio[i].setText(objDatosTrapecio[i].toString());
-                        }else{
-                            arrayTextEjTrapecio[i].setText("");
+                            if (!objDatosTrapecio[i].isEmpty()) {
+                                arrayTextEjTerciarios[i].setText(objDatosTrapecio[i].toString());
+                                terciaria = true;
+                            } else {
+                                arrayTextEjTerciarios[i].setText("");
+                            }
                         }
                     }
 

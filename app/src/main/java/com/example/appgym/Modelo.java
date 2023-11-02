@@ -23,8 +23,8 @@ import java.util.Date;
 public class Modelo {
 
     Calendar calen = Calendar.getInstance();
-    int mes = calen.get(Calendar.MONTH);
-    int dia = calen.get(Calendar.DAY_OF_MONTH)+1;
+    int mes = calen.get(Calendar.MONTH)+1;
+    int dia = calen.get(Calendar.DAY_OF_MONTH);
 
     String fecha = mes + "/" + dia;
 
