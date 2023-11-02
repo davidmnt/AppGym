@@ -186,6 +186,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
         Spinner despleMusculo1 = findViewById(R.id.despleMusuculouno);
         Spinner despleMusculo2 = findViewById(R.id.despleMusuculodos);
         Spinner despleMusculo3 = findViewById(R.id.despleMusuculotres);
+        Spinner despleMusculo4 = findViewById(R.id.despleMusuculocuatro);
 
         //Declaramos los desplegables de los ejercicios
 
@@ -238,7 +239,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
 
         //Creamos el array de los grupos musculares
 
-        Spinner[] arrayDesplegablesDias = {despleMusculo1, despleMusculo2, despleMusculo3};
+        Spinner[] arrayDesplegablesDias = {despleMusculo1, despleMusculo2, despleMusculo3,despleMusculo4};
         ArrayAdapter<CharSequence> adapterDias = ArrayAdapter.createFromResource(this, R.array.diaEj, android.R.layout.simple_spinner_item);
         adapterDias.setDropDownViewResource(android.R.layout.simple_spinner_item);
 
@@ -496,7 +497,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
                 switch (seleccion) {
                     case "Seleccione una opcion":
 
-                        for (i = 9; i < 13; i++) {
+                        for (i = 9; i < 12; i++) {
 
                             arrayDesplegablesEjercicios[i].setAdapter(adapterVacio);
                         }
@@ -574,15 +575,112 @@ public class EntrenamientoActivity extends AppCompatActivity {
                 }
             }
 
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 Log.e("Seleccion nula", "Tienes que seleccionar un item");
             }
         });
 
+        despleMusculo4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion = despleMusculo4.getSelectedItem().toString();
+
+                switch (seleccion) {
+                    case "Seleccione una opcion":
+
+                        for (i = 12; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterVacio);
+                        }
+                        break;
+                    case "Pecho":
+
+                        for (i = 12; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterPecho);
+                        }
+                        break;
+                    case "Hombro":
+
+                        for (i = 12; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterHombro);
+                        }
+                        break;
+                    case "Biceps":
+
+                        for (i = 12; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterBiceps);
+                        }
+                        break;
+                    case "Triceps":
+
+                        for (i = 12; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterTriceps);
+                        }
+                        break;
+                    case "Espalda":
+
+                        for (i = 12; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterEspalda);
+                        }
+                        break;
+                    case "Pierna":
+
+                        for (i = 12; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterPierna);
+                        }
+                        break;
+                    case "Femoral":
+
+                        for (i = 12; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterFemoral);
+                        }
+                        break;
+                    case "Aductores":
+
+                        for (i = 12; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterAductores);
+                        }
+                        break;
+                    case "Gemelo":
+
+                        for (i = 12; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterGemelo);
+                        }
+                        break;
+                    case "Trapecio":
+
+                        for (i = 12; i < 13; i++) {
+
+                            arrayDesplegablesEjercicios[i].setAdapter(adapterTrapecio);
+                        }
+                        break;
+                }
+            }
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Log.e("Seleccion nula", "Tienes que seleccionar un item");
+            }
+        });
+
+
+
         botonEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 String resultLog = "";
                 String result = "";
@@ -1125,9 +1223,9 @@ public class EntrenamientoActivity extends AppCompatActivity {
                 }
 
                 if (resInsert == 1) {
-                    Toast.makeText(EntrenamientoActivity.this, "Enviado correctamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EntrenamientoActivity.this, "Enhorabuena has terminado el entrenamiento", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(EntrenamientoActivity.this, "No enviado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EntrenamientoActivity.this, "No enviado a la base de datos, error 404", Toast.LENGTH_SHORT).show();
                 }
 
             }
