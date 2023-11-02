@@ -9,8 +9,6 @@ import android.view.Display;
 import androidx.annotation.Nullable;
 
 public class conexionSQLlite extends SQLiteOpenHelper {
-    Modelo con = new Modelo();
-
 
     final String TBL_PECHO = "CREATE TABLE IF NOT EXISTS PECHO(" +
             "id varchar(40)," +
@@ -54,7 +52,7 @@ public class conexionSQLlite extends SQLiteOpenHelper {
             "PressFrancesSentado varchar(40)," +
             "TironPoleaEncimaDeLaCabeza varchar(40))";
 
-    final String TBL_PIERNA= "CREATE TABLE IF NOT EXISTS PIERNA(" +
+    final String TBL_PIERNA = "CREATE TABLE IF NOT EXISTS PIERNA(" +
             "id varchar(40)," +
             "ExtensionCuádriceps varchar(40)," +
             "Prensa varchar(40)," +
@@ -76,16 +74,16 @@ public class conexionSQLlite extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-            db.execSQL(TBL_PECHO);
-            db.execSQL(TBL_BICEPS);
-            db.execSQL(TBL_FEMORAL);
-            db.execSQL(TBL_ADUCTORES);
-            db.execSQL(TBL_GEMELO);
-            db.execSQL(TBL_HOMBRO);
-            db.execSQL(TBL_TRICEPS);
-            db.execSQL(TBL_PIERNA);
-            db.execSQL(TBL_ESPALDA);
-            db.execSQL(TBL_TRAPECIO);
+        db.execSQL(TBL_PECHO);
+        db.execSQL(TBL_BICEPS);
+        db.execSQL(TBL_FEMORAL);
+        db.execSQL(TBL_ADUCTORES);
+        db.execSQL(TBL_GEMELO);
+        db.execSQL(TBL_HOMBRO);
+        db.execSQL(TBL_TRICEPS);
+        db.execSQL(TBL_PIERNA);
+        db.execSQL(TBL_ESPALDA);
+        db.execSQL(TBL_TRAPECIO);
     }
 
     @Override
@@ -93,8 +91,5 @@ public class conexionSQLlite extends SQLiteOpenHelper {
 
     }
 
-    public boolean tablaExiste(SQLiteDatabase db, String nombreTabla) {
-        Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table' AND name=?", new String[]{nombreTabla});
-        return cursor.getCount() > 0;
-    }
+
 }
