@@ -36,9 +36,28 @@ public class Modelo {
 
     public int insertaPesoPecho(Context context, PechoO p) {
         int res = 0;
+        String sql = null;
 
-        String sql = "INSERT INTO PECHO (id,pressPlanoMaquina,pressInclinado,contractora,flexiones) VALUES ('" + fecha + "','" + p.getPressPlanoMaquina() + "','" + p.getPressInclinado() + "'," +
-                "'" + p.getContractora() + "','" + p.getFlexiones() + "')";
+
+        if(!p.getPressPlanoMaquina().isEmpty() && !p.getPressInclinado().isEmpty() && !p.getContractora().isEmpty() && !p.getFlexiones().isEmpty()) {
+
+            sql = "INSERT INTO PECHO (id,pressPlanoMaquina,pressInclinado,contractora,flexiones) VALUES ('" + fecha + "','" + p.getPressPlanoMaquina() + "','" + p.getPressInclinado() + "'," +
+                    "'" + p.getContractora() + "','" + p.getFlexiones() + "')";
+
+        }else if(!p.getPressPlanoMaquina().isEmpty() && !p.getPressInclinado().isEmpty() && !p.getContractora().isEmpty() && p.getFlexiones().isEmpty()) {
+
+            sql = "INSERT INTO PECHO (id,pressPlanoMaquina,pressInclinado,contractora) VALUES ('" + fecha + "','" + p.getPressPlanoMaquina() + "','" + p.getPressInclinado() + "'," +
+                    "'" + p.getContractora() + "')";
+
+        }else if(!p.getPressPlanoMaquina().isEmpty() && !p.getPressInclinado().isEmpty() && p.getContractora().isEmpty() && p.getFlexiones().isEmpty()) {
+
+            sql = "INSERT INTO PECHO (id,pressPlanoMaquina,pressInclinado) VALUES ('" + fecha + "','" + p.getPressPlanoMaquina() + "','" + p.getPressInclinado() + "')";
+
+        }else if(!p.getPressPlanoMaquina().isEmpty() && p.getPressInclinado().isEmpty() && p.getContractora().isEmpty() && p.getFlexiones().isEmpty()) {
+
+            sql = "INSERT INTO PECHO (id,pressPlanoMaquina) VALUES ('" + fecha + "','" + p.getPressPlanoMaquina() + "')";
+        }
+
         SQLiteDatabase db = this.getConn(context);
 
         try {
@@ -52,9 +71,26 @@ public class Modelo {
 
     public int insertaPesoEspalda(Context context, EspaldaO e) {
         int res = 0;
+        String sql = null;
+        if(!e.getPullOver().isEmpty() && !e.getRackPull().isEmpty() && !e.getJalonPecho().isEmpty() && !e.getRemoBarra().isEmpty() && !e.getRemoT().isEmpty()) {
+             sql = "INSERT INTO ESPALDA (id,PullOver,RackPull,JalonPecho,RemoBarra,RemoT) VALUES ('" + fecha + "','" + e.getPullOver() + "','" + e.getRackPull() + "'," +
+                    "'" + e.getJalonPecho() + "','" + e.getRemoBarra() + "','" + e.getRemoT() + "')";
 
-        String sql = "INSERT INTO ESPALDA (id,PullOver,RackPull,JalonPecho,RemoBarra,RemoT) VALUES ('" + fecha + "','" + e.getPullOver() + "','" + e.getRackPull() + "'," +
-                "'" + e.getJalonPecho() + "','" + e.getRemoBarra() + "','" + e.getRemoT() + "')";
+        }else if(!e.getPullOver().isEmpty() && !e.getRackPull().isEmpty() && !e.getJalonPecho().isEmpty() && !e.getRemoBarra().isEmpty() && e.getRemoT().isEmpty()) {
+            sql = "INSERT INTO ESPALDA (id,PullOver,RackPull,JalonPecho,RemoBarra) VALUES ('" + fecha + "','" + e.getPullOver() + "','" + e.getRackPull() + "'," +
+                    "'" + e.getJalonPecho() + "','" + e.getRemoBarra() + "')";
+
+        }else if(!e.getPullOver().isEmpty() && !e.getRackPull().isEmpty() && !e.getJalonPecho().isEmpty() && e.getRemoBarra().isEmpty() && e.getRemoT().isEmpty()) {
+            sql = "INSERT INTO ESPALDA (id,PullOver,RackPull,JalonPecho) VALUES ('" + fecha + "','" + e.getPullOver() + "','" + e.getRackPull() + "'," +
+                    "'" + e.getJalonPecho() + "')";
+        }
+        else if(!e.getPullOver().isEmpty() && !e.getRackPull().isEmpty() && e.getJalonPecho().isEmpty() && e.getRemoBarra().isEmpty() && e.getRemoT().isEmpty()) {
+            sql = "INSERT INTO ESPALDA (id,PullOver,RackPull) VALUES ('" + fecha + "','" + e.getPullOver() + "','" + e.getRackPull() + "')";
+        }
+        else if(!e.getPullOver().isEmpty() && e.getRackPull().isEmpty() && e.getJalonPecho().isEmpty() && e.getRemoBarra().isEmpty() && e.getRemoT().isEmpty()) {
+            sql = "INSERT INTO ESPALDA (id,PullOver) VALUES ('" + fecha + "','" + e.getPullOver() + "')";
+        }
+
         SQLiteDatabase db = this.getConn(context);
 
         try {
@@ -68,9 +104,19 @@ public class Modelo {
 
     public int insertaPesoPierna(Context context, PiernaO p) {
         int res = 0;
+        String sql = null;
 
-        String sql = "INSERT INTO PIERNA (id,ExtensionCuádriceps,Prensa,PrensaUnaPierna) VALUES ('" + fecha + "','" + p.getExtensionCuádriceps() + "','" + p.getPrensa() + "'," +
-                "'" + p.getPrensaUnaPierna() + "')";
+        if(!p.getExtensionCuádriceps().isEmpty() && !p.getPrensa().isEmpty() && !p.getPrensaUnaPierna().isEmpty()) {
+            sql = "INSERT INTO PIERNA (id,ExtensionCuádriceps,Prensa,PrensaUnaPierna) VALUES ('" + fecha + "','" + p.getExtensionCuádriceps() + "','" + p.getPrensa() + "'," +
+                    "'" + p.getPrensaUnaPierna() + "')";
+        }
+        else if(!p.getExtensionCuádriceps().isEmpty() && !p.getPrensa().isEmpty() && p.getPrensaUnaPierna().isEmpty()) {
+            sql = "INSERT INTO PIERNA (id,ExtensionCuádriceps,Prensa) VALUES ('" + fecha + "','" + p.getExtensionCuádriceps() + "','" + p.getPrensa() + "')";
+        }
+        else if(!p.getExtensionCuádriceps().isEmpty() && p.getPrensa().isEmpty() && p.getPrensaUnaPierna().isEmpty()) {
+            sql = "INSERT INTO PIERNA (id,ExtensionCuádriceps) VALUES ('" + fecha + "','" + p.getExtensionCuádriceps() + "')";
+        }
+
         SQLiteDatabase db = this.getConn(context);
 
         try {
@@ -99,8 +145,14 @@ public class Modelo {
 
     public int insertaPesoGemelo(Context context, GemeloO g) {
         int res = 0;
+        String sql = null;
+        if(!g.getGemeloEnPrensa().isEmpty() && !g.getGemeloUnaPierna().isEmpty()) {
+            sql = "INSERT INTO GEMELO (id,GemeloEnPrensa,GemeloUnaPierna) VALUES ('" + fecha + "','" + g.getGemeloEnPrensa() + "','" + g.getGemeloUnaPierna() + "')";
+        }
+        else if(!g.getGemeloEnPrensa().isEmpty() && g.getGemeloUnaPierna().isEmpty()) {
+            sql = "INSERT INTO GEMELO (id,GemeloEnPrensa) VALUES ('" + fecha + "','" + g.getGemeloEnPrensa() + "')";
+        }
 
-        String sql = "INSERT INTO GEMELO (id,GemeloEnPrensa,GemeloUnaPierna) VALUES ('" + fecha + "','" + g.getGemeloEnPrensa() + "','" + g.getGemeloUnaPierna() + "')";
         SQLiteDatabase db = this.getConn(context);
 
         try {
@@ -129,9 +181,25 @@ public class Modelo {
 
     public int insertaPesoHombro(Context context, HombroO h) {
         int res = 0;
-
-        String sql = "INSERT INTO HOMBRO (id,ElevacionesLatMancuernas,Pajaro,PressMaquina,LateralesSentado,LateralesPolea) VALUES ('" + fecha + "','" + h.getElevacionesLatMancuernas() + "','" + h.getPajaro() + "'," +
-                "'" + h.getPressMaquina() + "','" + h.getLateralesSentado() + "','" + h.getLateralesPolea() + "')";
+        String sql = null;
+        if(h.getElevacionesLatMancuernas().isEmpty() && !h.getPajaro().isEmpty() && !h.getPressMaquina().isEmpty() && !h.getLateralesSentado().isEmpty() && !h.getLateralesPolea().isEmpty()) {
+            sql = "INSERT INTO HOMBRO (id,ElevacionesLatMancuernas,Pajaro,PressMaquina,LateralesSentado,LateralesPolea) VALUES ('" + fecha + "','" + h.getElevacionesLatMancuernas() + "','" + h.getPajaro() + "'," +
+                    "'" + h.getPressMaquina() + "','" + h.getLateralesSentado() + "','" + h.getLateralesPolea() + "')";
+        }
+        else if(h.getElevacionesLatMancuernas().isEmpty() && !h.getPajaro().isEmpty() && !h.getPressMaquina().isEmpty() && !h.getLateralesSentado().isEmpty() && h.getLateralesPolea().isEmpty()) {
+            sql = "INSERT INTO HOMBRO (id,ElevacionesLatMancuernas,Pajaro,PressMaquina,LateralesSentado) VALUES ('" + fecha + "','" + h.getElevacionesLatMancuernas() + "','" + h.getPajaro() + "'," +
+                    "'" + h.getPressMaquina() + "','" + h.getLateralesSentado() + "')";
+        }
+        else if(h.getElevacionesLatMancuernas().isEmpty() && !h.getPajaro().isEmpty() && !h.getPressMaquina().isEmpty() && h.getLateralesSentado().isEmpty() && h.getLateralesPolea().isEmpty()) {
+            sql = "INSERT INTO HOMBRO (id,ElevacionesLatMancuernas,Pajaro,PressMaquina) VALUES ('" + fecha + "','" + h.getElevacionesLatMancuernas() + "','" + h.getPajaro() + "'," +
+                    "'" + h.getPressMaquina() + "')";
+        }
+        else if(h.getElevacionesLatMancuernas().isEmpty() && !h.getPajaro().isEmpty() && h.getPressMaquina().isEmpty() && h.getLateralesSentado().isEmpty() && h.getLateralesPolea().isEmpty()) {
+            sql = "INSERT INTO HOMBRO (id,ElevacionesLatMancuernas,Pajaro) VALUES ('" + fecha + "','" + h.getElevacionesLatMancuernas() + "','" + h.getPajaro() + "')";
+        }
+        else if(h.getElevacionesLatMancuernas().isEmpty() && h.getPajaro().isEmpty() && h.getPressMaquina().isEmpty() && h.getLateralesSentado().isEmpty() && h.getLateralesPolea().isEmpty()) {
+            sql = "INSERT INTO HOMBRO (id,ElevacionesLatMancuernas) VALUES ('" + fecha + "','" + h.getElevacionesLatMancuernas() + "')";
+        }
         SQLiteDatabase db = this.getConn(context);
 
         try {
@@ -160,9 +228,20 @@ public class Modelo {
 
     public int insertaPesoTriceps(Context context, TricepsO tr) {
         int res = 0;
+        String sql = null;
 
-        String sql = "INSERT INTO TRICEPS (id,PressFrancesTumbado,PressFrancesSentado,TironPoleaEncimaDeLaCabeza) VALUES ('" + fecha + "','" + tr.getPressFrancesTumbado() + "'," +
-                "'" + tr.getPressFrancesSentado() + "','" + tr.getTironPoleaEncimaDeLaCabeza() + "')";
+        if(!tr.getPressFrancesTumbado().isEmpty() && !tr.getPressFrancesSentado().isEmpty() && !tr.getTironPoleaEncimaDeLaCabeza().isEmpty()) {
+            sql = "INSERT INTO TRICEPS (id,PressFrancesTumbado,PressFrancesSentado,TironPoleaEncimaDeLaCabeza) VALUES ('" + fecha + "','" + tr.getPressFrancesTumbado() + "'," +
+                    "'" + tr.getPressFrancesSentado() + "','" + tr.getTironPoleaEncimaDeLaCabeza() + "')";
+        }
+        else if(!tr.getPressFrancesTumbado().isEmpty() && !tr.getPressFrancesSentado().isEmpty() && tr.getTironPoleaEncimaDeLaCabeza().isEmpty()) {
+            sql = "INSERT INTO TRICEPS (id,PressFrancesTumbado,PressFrancesSentado) VALUES ('" + fecha + "','" + tr.getPressFrancesTumbado() + "'," +
+                    "'" + tr.getPressFrancesSentado() + "')";
+        }
+        else if(!tr.getPressFrancesTumbado().isEmpty() && tr.getPressFrancesSentado().isEmpty() && tr.getTironPoleaEncimaDeLaCabeza().isEmpty()) {
+            sql = "INSERT INTO TRICEPS (id,PressFrancesTumbado,PressFrancesSentado) VALUES ('" + fecha + "','" + tr.getPressFrancesTumbado() + "')";
+        }
+
         SQLiteDatabase db = this.getConn(context);
 
         try {
@@ -176,9 +255,16 @@ public class Modelo {
 
     public int insertaPesoBiceps(Context context, BicepsO b) {
         int res = 0;
+        String sql = null;
 
-        String sql = "INSERT INTO BICEPS (id,CurlAlternoPie,CurlInvertido) VALUES ('" + fecha + "','" + b.getCurlAlternoPie() + "'," +
-                "'" + b.getCurlInvertido() + "')";
+        if(!b.getCurlAlternoPie().isEmpty() && !b.getCurlInvertido().isEmpty()) {
+            sql = "INSERT INTO BICEPS (id,CurlAlternoPie,CurlInvertido) VALUES ('" + fecha + "','" + b.getCurlAlternoPie() + "'," +
+                    "'" + b.getCurlInvertido() + "')";
+        }
+       else if(!b.getCurlAlternoPie().isEmpty() && b.getCurlInvertido().isEmpty()) {
+            sql = "INSERT INTO BICEPS (id,CurlAlternoPie) VALUES ('" + fecha + "','" + b.getCurlAlternoPie() + "')";
+        }
+
         SQLiteDatabase db = this.getConn(context);
 
         try {
