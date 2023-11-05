@@ -55,6 +55,7 @@ public class conexionSQLlite extends SQLiteOpenHelper {
     final String TBL_PIERNA = "CREATE TABLE IF NOT EXISTS PIERNA(" +
             "id varchar(40)," +
             "ExtensionCuádriceps varchar(40)," +
+            "HackSquad varchar(40)," +
             "Prensa varchar(40)," +
             "PrensaUnaPierna varchar(40))";
 

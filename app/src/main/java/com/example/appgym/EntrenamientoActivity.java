@@ -68,6 +68,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
 
     //Pierna
     public static String ExtensionCuádriceps = "";
+    public static String HackSquad = "";
     public static String Prensa = "";
     public static String PrensaUnaPierna = "";
 
@@ -233,7 +234,7 @@ public class EntrenamientoActivity extends AppCompatActivity {
 
         String[] arrayEjer = {"PressPlanoMaquina", "PressInclinado", "Contractora", "Flexiones", "ElevacionesLatMancuernas",
                 "CurlAlternoPie", "CurlInvertido", "PullOver", "RackPull", "JalonPecho", "RemoBarra", "RemoT", "PressFrancesTumbado",
-                "PressFrancesSentado", "TironPoleaEncimaDeLaCabeza", "FemoralTumbado", "ExtensionCuádriceps", "Prensa", "PrensaUnaPierna", "Aductores", "GemeloEnPrensa",
+                "PressFrancesSentado", "TironPoleaEncimaDeLaCabeza", "FemoralTumbado", "ExtensionCuádriceps", "HackSquad","Prensa", "PrensaUnaPierna", "Aductores", "GemeloEnPrensa",
                 "GemeloUnaPierna", "Pajaro", "PressMaquina", "LateralesSentado", "LateralesPolea", "EncogimientoPesado"};
 
 
@@ -868,6 +869,17 @@ public class EntrenamientoActivity extends AppCompatActivity {
                         }
                         resultLog = "En el ejercicio: " + arrayDesplegablesEjercicios[i].getSelectedItem().toString() + " he levantado: " + ExtensionCuádriceps;
 
+                    }else if (arrayDesplegablesEjercicios[i].getSelectedItem().toString().equals("Hack squad")) {
+
+                        for (int j = 0; j < arrayEjer.length; j++) {
+
+                            if (arrayEjer[j].toString().equals("HackSquad")) {
+                                HackSquad = arrayText[i].getText().toString();
+                                break;
+                            }
+                        }
+                        resultLog = "En el ejercicio: " + arrayDesplegablesEjercicios[i].getSelectedItem().toString() + " he levantado: " + HackSquad;
+
                     } else if (arrayDesplegablesEjercicios[i].getSelectedItem().toString().equals("Prensa")) {
 
                         for (int j = 0; j < arrayEjer.length; j++) {
@@ -1062,24 +1074,56 @@ public class EntrenamientoActivity extends AppCompatActivity {
                 }
 
                 //PIERNA
-                if (!ExtensionCuádriceps.isEmpty() && !Prensa.isEmpty() && !PrensaUnaPierna.isEmpty()) {
-                    pie = new PiernaO(ExtensionCuádriceps, Prensa, PrensaUnaPierna);
+                if (!ExtensionCuádriceps.isEmpty() && !HackSquad.isEmpty() && !Prensa.isEmpty() && !PrensaUnaPierna.isEmpty()) {
+                    pie = new PiernaO(ExtensionCuádriceps,HackSquad, Prensa, PrensaUnaPierna);
                     resInsert = obj.insertaPesoPierna(EntrenamientoActivity.this, pie);
                     ExtensionCuádriceps = "";
+                    HackSquad = "";
                     Prensa = "";
                     PrensaUnaPierna = "";
 
-                } else if (!ExtensionCuádriceps.isEmpty() && !Prensa.isEmpty() && PrensaUnaPierna.isEmpty()) {
-                    pie = new PiernaO(ExtensionCuádriceps, Prensa, "");
+                }
+               else if (!ExtensionCuádriceps.isEmpty() && !HackSquad.isEmpty() && Prensa.isEmpty() && !PrensaUnaPierna.isEmpty()) {
+                    pie = new PiernaO(ExtensionCuádriceps,HackSquad, "", PrensaUnaPierna);
                     resInsert = obj.insertaPesoPierna(EntrenamientoActivity.this, pie);
                     ExtensionCuádriceps = "";
+                    HackSquad = "";
                     Prensa = "";
                     PrensaUnaPierna = "";
 
-                } else if (!ExtensionCuádriceps.isEmpty() && Prensa.isEmpty() && PrensaUnaPierna.isEmpty()) {
-                    pie = new PiernaO(ExtensionCuádriceps, "", "");
+                }
+                else if (!ExtensionCuádriceps.isEmpty() && !HackSquad.isEmpty() && !Prensa.isEmpty() && PrensaUnaPierna.isEmpty()) {
+                    pie = new PiernaO(ExtensionCuádriceps,HackSquad, Prensa, "");
                     resInsert = obj.insertaPesoPierna(EntrenamientoActivity.this, pie);
                     ExtensionCuádriceps = "";
+                    HackSquad = "";
+                    Prensa = "";
+                    PrensaUnaPierna = "";
+
+                }
+                else if (!ExtensionCuádriceps.isEmpty() && !HackSquad.isEmpty() &&  Prensa.isEmpty() && PrensaUnaPierna.isEmpty()) {
+                    pie = new PiernaO(ExtensionCuádriceps,HackSquad, "", "");
+                    resInsert = obj.insertaPesoPierna(EntrenamientoActivity.this, pie);
+                    ExtensionCuádriceps = "";
+                    HackSquad = "";
+                    Prensa = "";
+                    PrensaUnaPierna = "";
+
+                }
+                else if (!ExtensionCuádriceps.isEmpty() && HackSquad.isEmpty() &&  !Prensa.isEmpty() && PrensaUnaPierna.isEmpty()) {
+                    pie = new PiernaO(ExtensionCuádriceps,"", Prensa, "");
+                    resInsert = obj.insertaPesoPierna(EntrenamientoActivity.this, pie);
+                    ExtensionCuádriceps = "";
+                    HackSquad = "";
+                    Prensa = "";
+                    PrensaUnaPierna = "";
+
+                }
+                else if (!ExtensionCuádriceps.isEmpty()  && HackSquad.isEmpty() && Prensa.isEmpty() && PrensaUnaPierna.isEmpty()) {
+                    pie = new PiernaO(ExtensionCuádriceps,"", "", "");
+                    resInsert = obj.insertaPesoPierna(EntrenamientoActivity.this, pie);
+                    ExtensionCuádriceps = "";
+                    HackSquad = "";
                     Prensa = "";
                     PrensaUnaPierna = "";
                 }

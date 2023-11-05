@@ -106,13 +106,31 @@ public class Modelo {
         int res = 0;
         String sql = null;
 
-        if(!p.getExtensionCuádriceps().isEmpty() && !p.getPrensa().isEmpty() && !p.getPrensaUnaPierna().isEmpty()) {
-            sql = "INSERT INTO PIERNA (id,ExtensionCuádriceps,Prensa,PrensaUnaPierna) VALUES ('" + fecha + "','" + p.getExtensionCuádriceps() + "','" + p.getPrensa() + "'," +
+        if(!p.getExtensionCuádriceps().isEmpty() && !p.getHackSquad().isEmpty() && !p.getPrensa().isEmpty() && !p.getPrensaUnaPierna().isEmpty()) {
+            sql = "INSERT INTO PIERNA (id,ExtensionCuádriceps,HackSquad,Prensa,PrensaUnaPierna) VALUES ('" + fecha + "','" + p.getExtensionCuádriceps() + "','" + p.getHackSquad() + "','" + p.getPrensa() + "'," +
                     "'" + p.getPrensaUnaPierna() + "')";
         }
-        else if(!p.getExtensionCuádriceps().isEmpty() && !p.getPrensa().isEmpty() && p.getPrensaUnaPierna().isEmpty()) {
+
+        else if(!p.getExtensionCuádriceps().isEmpty()  && !p.getHackSquad().isEmpty() && !p.getPrensa().isEmpty() && p.getPrensaUnaPierna().isEmpty()) {
+            sql = "INSERT INTO PIERNA (id,ExtensionCuádriceps,HackSquad,Prensa) VALUES ('" + fecha + "','" + p.getExtensionCuádriceps() + "','" + p.getHackSquad() + "','" + p.getPrensa() + "')";
+        }
+
+        else if(!p.getExtensionCuádriceps().isEmpty()  && !p.getHackSquad().isEmpty() && p.getPrensa().isEmpty() && !p.getPrensaUnaPierna().isEmpty()) {
+            sql = "INSERT INTO PIERNA (id,ExtensionCuádriceps,HackSquad,PrensaUnaPierna) VALUES ('" + fecha + "','" + p.getExtensionCuádriceps() + "','" + p.getHackSquad() + "','" + p.getPrensaUnaPierna() + "')";
+        }
+
+        else if(!p.getExtensionCuádriceps().isEmpty()  && !p.getHackSquad().isEmpty() && p.getPrensa().isEmpty() && p.getPrensaUnaPierna().isEmpty()) {
+            sql = "INSERT INTO PIERNA (id,ExtensionCuádriceps,HackSquad) VALUES ('" + fecha + "','" + p.getExtensionCuádriceps() + "','" + p.getHackSquad() + "')";
+        }
+
+        else if(!p.getExtensionCuádriceps().isEmpty()  && p.getHackSquad().isEmpty() && !p.getPrensa().isEmpty() && p.getPrensaUnaPierna().isEmpty()) {
             sql = "INSERT INTO PIERNA (id,ExtensionCuádriceps,Prensa) VALUES ('" + fecha + "','" + p.getExtensionCuádriceps() + "','" + p.getPrensa() + "')";
         }
+
+        else if(!p.getExtensionCuádriceps().isEmpty()  && p.getHackSquad().isEmpty() && p.getPrensa().isEmpty() && !p.getPrensaUnaPierna().isEmpty()) {
+            sql = "INSERT INTO PIERNA (id,ExtensionCuádriceps,PrensaUnaPierna) VALUES ('" + fecha + "','" + p.getExtensionCuádriceps() + "','" + p.getPrensaUnaPierna()  + "')";
+        }
+
         else if(!p.getExtensionCuádriceps().isEmpty() && p.getPrensa().isEmpty() && p.getPrensaUnaPierna().isEmpty()) {
             sql = "INSERT INTO PIERNA (id,ExtensionCuádriceps) VALUES ('" + fecha + "','" + p.getExtensionCuádriceps() + "')";
         }

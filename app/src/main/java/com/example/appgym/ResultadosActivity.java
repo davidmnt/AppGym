@@ -87,7 +87,7 @@ public class ResultadosActivity extends AppCompatActivity {
 
                 //Pierna
                 cur = db.query("PIERNA", null, null, null, null, null, null);
-                String[] columnasPierna = {cur.getColumnName(1), cur.getColumnName(2), cur.getColumnName(3)};
+                String[] columnasPierna = {cur.getColumnName(1), cur.getColumnName(2),cur.getColumnName(3), cur.getColumnName(4)};
 
                 //Aductores
                 cur = db.query("ADUCTORES", null, null, null, null, null, null);
@@ -266,16 +266,18 @@ public class ResultadosActivity extends AppCompatActivity {
                     String datoPierna1 = "";
                     String datoPierna2 = "";
                     String datoPierna3 = "";
+                    String datoPierna4 = "";
 
 
                     if (cur.getCount() > 0) {
                         datoPierna1 = (cur.getColumnName(0) + ":" + " " + cur.getString(0));
                         datoPierna2 = (cur.getColumnName(1) + ":" + " " + cur.getString(1));
                         datoPierna3 = (cur.getColumnName(2) + ":" + " " + cur.getString(2));
+                        datoPierna4 = (cur.getColumnName(3) + ":" + " " + cur.getString(3));
 
                     }
 
-                    String[] objDatosPierna = {datoPierna1, datoPierna2, datoPierna3};
+                    String[] objDatosPierna = {datoPierna1, datoPierna2, datoPierna3,datoPierna4};
 
 
 
