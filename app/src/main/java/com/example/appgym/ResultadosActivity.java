@@ -6,13 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.example.appgym.Conexion.Modelo;
+import com.example.appgym.Conexion.conexionSQLlite;
 
 public class ResultadosActivity extends AppCompatActivity {
     private static String fec;

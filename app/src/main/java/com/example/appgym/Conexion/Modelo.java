@@ -1,9 +1,9 @@
-package com.example.appgym;
+package com.example.appgym.Conexion;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.appgym.Conexion.conexionSQLlite;
 import com.example.appgym.Objetos.AductoresO;
 import com.example.appgym.Objetos.BicepsO;
 import com.example.appgym.Objetos.EspaldaO;
@@ -15,10 +15,7 @@ import com.example.appgym.Objetos.PiernaO;
 import com.example.appgym.Objetos.TrapecioO;
 import com.example.appgym.Objetos.TricepsO;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class Modelo {
 
@@ -257,7 +254,7 @@ public class Modelo {
                     "'" + tr.getPressFrancesSentado() + "')";
         }
         else if(!tr.getPressFrancesTumbado().isEmpty() && tr.getPressFrancesSentado().isEmpty() && tr.getTironPoleaEncimaDeLaCabeza().isEmpty()) {
-            sql = "INSERT INTO TRICEPS (id,PressFrancesTumbado,PressFrancesSentado) VALUES ('" + fecha + "','" + tr.getPressFrancesTumbado() + "')";
+            sql = "INSERT INTO TRICEPS (id,PressFrancesTumbado) VALUES ('" + fecha + "','" + tr.getPressFrancesTumbado() + "')";
         }
 
         SQLiteDatabase db = this.getConn(context);
