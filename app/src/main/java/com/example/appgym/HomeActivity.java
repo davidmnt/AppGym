@@ -2,6 +2,7 @@ package com.example.appgym;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -56,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
     private void mandartablaEntrenamiento(){
         Intent i = new Intent(this, TablaEntrenamientoActivity.class);
         startActivity(i);
+        
     }
 
     private void mandartablaDieta(){

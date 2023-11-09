@@ -74,6 +74,39 @@
         <item></item>
     </string-array>
 
+    <string-array name="EjercicioDiaPecho">
+        <item>Pecho</item>
+    </string-array>
+    <string-array name="EjercicioDiaHombro">
+        <item>Hombro</item>
+    </string-array>
+    <string-array name="EjercicioDiaBiceps">
+        <item>Biceps</item>
+    </string-array>
+    <string-array name="EjercicioDiaTriceps">
+        <item>Triceps</item>
+    </string-array>
+    <string-array name="EjercicioDiaEspalda">
+        <item>Espalda</item>
+    </string-array>
+    <string-array name="EjercicioDiaPierna">
+        <item>Pierna</item>
+    </string-array>
+    <string-array name="EjercicioDiaFemoral">
+        <item>Femoral</item>
+    </string-array>
+    <string-array name="EjercicioDiaAductores">
+        <item>Aductores</item>
+    </string-array>
+    <string-array name="EjercicioDiaGemelo">
+        <item>Gemelo</item>
+    </string-array>
+    <string-array name="EjercicioDiaTrapecio">
+        <item>Trapecio</item>
+    </string-array>
+
+
+
 
     //Array de grupo musculares
 
