@@ -263,9 +263,9 @@ public class EntrenamientoActivity extends AppCompatActivity {
 
         //Funcionalidad de cronometro
         //Cronometro
-        Button start = findViewById(R.id.Start);
-        Button stop = findViewById(R.id.Stop);
-        Button reset = findViewById(R.id.reset);
+        ImageButton start = findViewById(R.id.Start);
+        ImageButton stop = findViewById(R.id.Stop);
+        ImageButton reset = findViewById(R.id.reset);
          reloj = findViewById(R.id.reloj);
 
 

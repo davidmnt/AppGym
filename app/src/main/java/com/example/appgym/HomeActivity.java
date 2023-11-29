@@ -1,6 +1,7 @@
 package com.example.appgym;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.app.DownloadManager;
 import android.content.Intent;
@@ -20,10 +21,10 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        ImageButton botontablaEntrenamiento = findViewById(R.id.tablaEntrenamiento);
-        ImageButton botontablaDieta = findViewById(R.id.tablaDieta);
-        ImageButton entrenamiento = findViewById(R.id.entrenamiento);
-        ImageButton resultados = findViewById(R.id.resultEntrenos);
+        CardView botontablaEntrenamiento = findViewById(R.id.tablaEntrenamiento);
+        CardView botontablaDieta = findViewById(R.id.tablaDieta);
+        CardView entrenamiento = findViewById(R.id.entrenamiento);
+        CardView resultados = findViewById(R.id.resultEntrenos);
 
         botontablaEntrenamiento.setOnClickListener(new View.OnClickListener() {
             @Override

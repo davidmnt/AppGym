@@ -21,7 +21,6 @@
         android:id="@+id/tittle"
         android:layout_width="348dp"
         android:layout_height="wrap_content"
-        android:background="@color/gris_claro"
         android:gravity="center"
         android:padding="15dp"
         android:text="Fitness App"
@@ -30,56 +29,198 @@
         app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <androidx.cardview.widget.CardView
+
         android:id="@+id/entrenamiento"
         android:layout_width="160dp"
         android:layout_height="180dp"
-        android:layout_marginStart="35dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="100dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tittle" >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imagenEntrenamiento"
+                android:layout_width="160dp"
+                android:layout_height="140dp"
+                android:src="@drawable/logo_entrenamiento"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Entrenamiento"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/imagenEntrenamiento"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+   <!-- <ImageButton
+        android:id="@+id/entrenamiento"
+        android:layout_width="160dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="100dp"
         android:adjustViewBounds="true"
-        android:backgroundTint="@color/white"
+       android:background="@drawable/redondeo"
         android:scaleType="centerInside"
         android:src="@drawable/logo_entrenamiento_texto"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tittle" />
+        app:layout_constraintTop_toBottomOf="@+id/tittle" /> -->
 
-    <ImageButton
+    <androidx.cardview.widget.CardView
+
+        android:id="@+id/resultEntrenos"
+        android:layout_width="160dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="50dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintStart_toStartOf="@id/entrenamiento"
+        app:layout_constraintTop_toBottomOf="@+id/entrenamiento">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imagenResultados"
+                android:layout_width="160dp"
+                android:layout_height="140dp"
+                android:src="@drawable/logo_resultados"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Resultado"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/imagenResultados"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- <ImageButton
         android:id="@+id/resultEntrenos"
         android:layout_width="160dp"
         android:layout_height="180dp"
         android:layout_marginTop="50dp"
         android:adjustViewBounds="true"
-        android:backgroundTint="@color/white"
+        android:background="@drawable/redondeo"
         android:scaleType="centerInside"
         android:src="@drawable/logo_resultados_texto1"
         app:layout_constraintStart_toStartOf="@id/entrenamiento"
-        app:layout_constraintTop_toBottomOf="@+id/entrenamiento" />
+        app:layout_constraintTop_toBottomOf="@+id/entrenamiento" /> -->
 
-    <ImageButton
+    <androidx.cardview.widget.CardView
+
         android:id="@+id/tablaEntrenamiento"
         android:layout_width="160dp"
         android:layout_height="180dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="35dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tittle">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imagenEstadisticas"
+                android:layout_width="100dp"
+                android:layout_height="140dp"
+                android:src="@drawable/logo_estadisticas"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Tabla de Ejercicios"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/imagenEstadisticas"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+  <!--  <ImageButton
+        android:id="@+id/tablaEntrenamiento"
+        android:layout_width="160dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/redondeo"
         android:adjustViewBounds="true"
-        android:backgroundTint="@color/white"
         android:scaleType="centerInside"
         android:src="@drawable/logo_estadisticas_texto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tittle" />
+        app:layout_constraintTop_toBottomOf="@+id/tittle" /> -->
 
-    <ImageButton
+    <androidx.cardview.widget.CardView
+
         android:id="@+id/tablaDieta"
         android:layout_width="160dp"
         android:layout_height="180dp"
         android:layout_marginTop="50dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintStart_toStartOf="@+id/tablaEntrenamiento"
+        app:layout_constraintTop_toBottomOf="@+id/tablaEntrenamiento">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imagenDieta"
+                android:layout_width="160dp"
+                android:layout_height="140dp"
+                android:src="@drawable/logo_dieta"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Dieta"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/imagenDieta"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+  <!--  <ImageButton
+        android:id="@+id/tablaDieta"
+        android:layout_width="160dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/redondeo"
         android:adjustViewBounds="true"
-        android:backgroundTint="@color/white"
         android:scaleType="centerInside"
         android:src="@drawable/logo_dieta_texto"
         app:layout_constraintStart_toStartOf="@+id/tablaEntrenamiento"
-        app:layout_constraintTop_toBottomOf="@+id/tablaEntrenamiento" />
+        app:layout_constraintTop_toBottomOf="@+id/tablaEntrenamiento" /> -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
